@@ -1,9 +1,15 @@
 <!DOCTYPE html>
-<html lang="uk">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="YourEnergy — find exercises by muscle groups, body parts and equipment" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <meta
+      name="description"
+      content="YourEnergy — find exercises by muscle groups, body parts and equipment"
+    />
     <title>YourEnergy</title>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="stylesheet" href="./css/styles.css" />
@@ -11,47 +17,54 @@
   <body>
     <!-- HEADER -->
     <header class="header" data-section="header">
-      <!-- TODO: розмітка хедера (відповідальний за header) -->
+      <!-- TODO: Header markup -->
     </header>
 
     <main>
       <!-- HERO -->
       <section class="hero" data-section="hero">
-        <!-- TODO: розмітка героя -->
+        <!-- TODO: Hero markup -->
       </section>
 
       <!-- FILTERS + CATEGORIES + EXERCISES -->
-      <section class="exercises-section" data-section="exercises">
+      <section class="exercises-section" data-section="catalog">
         <div class="container">
           <div class="filters" data-section="filters">
-            <!-- TODO: кнопки Muscles / Body parts / Equipment -->
+            <!-- TODO: Muscles / Body parts / Equipment buttons -->
           </div>
 
           <div class="categories" data-section="categories">
-            <!-- TODO: сітка карток категорій -->
+            <!-- TODO: Categories grid -->
           </div>
 
           <div class="exercises" data-section="exercises-list" hidden>
-            <!-- TODO: пошук + сітка карток вправ -->
+            <!-- TODO: Search + exercises cards grid -->
           </div>
         </div>
       </section>
 
       <!-- QUOTE -->
       <section class="quote-section" data-section="quote">
-        <!-- TODO: цитата дня + інфо 110 хвилин -->
+        <!-- TODO: Quote of the day + 110 min info -->
       </section>
     </main>
 
     <!-- FOOTER -->
     <footer class="footer" data-section="footer">
-      <!-- TODO: розмітка футера з формою підписки -->
+      <!-- TODO: Footer markup + subscription form -->
     </footer>
 
     <!-- SCROLL UP -->
-    <button class="scroll-up" data-section="scroll-up" aria-label="Scroll to top">↑</button>
+    <button
+      class="scroll-up"
+      data-section="scroll-up"
+      aria-label="Scroll to top"
+      hidden
+    >
+      ↑
+    </button>
 
-    <!-- MODAL (рендериться сюди динамічно) -->
+    <!-- Dynamic modal mount point -->
     <div id="modal-root"></div>
 
     <script type="module" src="./main.js"></script>
