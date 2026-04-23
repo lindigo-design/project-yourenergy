@@ -17,6 +17,8 @@
   "author": "Anatolii Borovets",
   "license": "ISC",
   "dependencies": {
+    "axios": "^1.15.2",
+    "izitoast": "^1.4.0",
     "vite-plugin-full-reload": "^1.2.0",
     "vite-plugin-html-inject": "^1.1.2"
   }
