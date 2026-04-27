@@ -13,6 +13,7 @@
 @import './components/filters.css';
 @import './components/categories.css';
 @import './components/exercises.css';
+@import './components/exercise-card.css';
 @import './components/modal-exercise.css';
 @import './components/favorites-page.css';
 @import './components/quote.css';
