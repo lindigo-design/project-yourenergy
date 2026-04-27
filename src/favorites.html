@@ -9,15 +9,34 @@
     <link rel="stylesheet" href="./css/styles.css" />
   </head>
   <body>
-    <header class="header" data-section="header"></header>
+    <load src="./partials/header.html" />
 
     <main>
       <section class="favorites-section" data-section="favorites-page">
-        <!-- TODO: favorites exercises list -->
+        <div class="container">
+          <h2 class="favorites-title">Favorites</h2>
+          
+          <div class="favorites-wrapper">
+            <div class="favorites-quote-wrap">
+              <load src="./partials/quote.html" />
+            </div>
+            
+            <div class="favorites-list-wrapper">
+              <!-- Empty state message (shown when no favorites) -->
+              <p class="favorites-empty-text">
+                It appears that you haven't added any exercises to your favorites yet. To get started, you can add exercises that you like to your favorites for easier access in the future.
+              </p>
+              
+              <!-- List of favorite exercises (hidden when empty) -->
+              <ul class="favorites-list">
+              </ul>
+            </div>
+          </div>
+        </div>
       </section>
     </main>
 
-    <footer class="footer" data-section="footer"></footer>
+    <load src="./partials/footer.html" />
 
     <button
       class="scroll-up"
