@@ -20,3 +20,38 @@
 // TODO: toggle бургер-меню (відкрити/закрити)
 // TODO: закривати меню по кліку на лінку або по ESC
 // TODO: додати active стан на поточну сторінку (Home vs Favorites)
+
+(() => {
+  const refs = {
+    openMenuBtn: document.querySelector("[data-menu-open]"),
+    closeMenuBtn: document.querySelector("[data-menu-close]"),
+    menu: document.querySelector("[data-menu]"),
+  };
+
+  refs.openMenuBtn.addEventListener("click", toggleMenu);
+  refs.closeMenuBtn.addEventListener("click", toggleMenu);
+
+  function toggleMenu() {
+    refs.menu.classList.toggle("is-open");
+    document.body.classList.toggle("no-scroll");
+  }
+
+  function setActiveMenu() {
+    const currentPath = window.location.pathname;
+    const navLinks = document.querySelectorAll('.nav-link, .mobile-nav-link');
+
+    navLinks.forEach(link => link.classList.remove('is-active'));
+
+    navLinks.forEach(link => {
+      const linkHref = link.getAttribute('href');
+      if (linkHref) {
+        const linkPath = linkHref.replace('./', '/');
+        if (linkPath === currentPath) {
+          link.classList.add('is-active');
+        }
+      }
+    });
+  }
+
+  setActiveMenu();
+})();
