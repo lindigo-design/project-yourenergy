@@ -26,4 +26,4 @@ import { showLoader, hideLoader } from './loader.js';
 // TODO: слухати EXERCISE_OPEN
 // TODO: запит getExerciseById, рендер
 // TODO: toggle Favorites + оновлення UI кнопки
-// TODO: закриття (backdrop, хрестик, ESC) + removeEventListener
+// TODO: закриття (backdrop, хрести, ESC) + removeEventListener
