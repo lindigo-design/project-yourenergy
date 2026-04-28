@@ -1,25 +1,59 @@
 // ============================================================
 //  ФІЛЬТРИ (кнопки Muscles / Body parts / Equipment)
-//  Відповідальний: [ПОСТАВ СВОЄ ІМ'Я]
+//  Відповідальний: Andrii Marchenko
 //
-//  Що реалізувати (ТЗ п.19):
+//  Що реалізовано (ТЗ п.19):
 //  - 3 кнопки-фільтри
-//  - Клік по кнопці → активний стиль + кинути EVENTS.FILTER_CHANGED
+//  - Клік → активний стиль + кидаю EVENTS.FILTER_CHANGED
 //  - За замовчуванням активна "Muscles"
 //
-//  ⚠️ ВАЖЛИВО: тільки цей файл кидає FILTER_CHANGED.
+//  ⚠️ Тільки цей файл кидає FILTER_CHANGED.
 //  Файл categories.js його СЛУХАЄ і перемальовує себе.
-//
-//  Твоя розмітка: src/partials/filters.html
-//  Твої стилі:    src/css/components/filters.css
 // ============================================================
 
 import { FILTERS, EVENTS } from './constants.js';
 
-// TODO: знайти кнопки за селектором
-// TODO: додати click listener, на кліку:
-//   1) зняти active з усіх, додати на поточну
-//   2) window.dispatchEvent(new CustomEvent(EVENTS.FILTER_CHANGED, {
-//        detail: { filter: FILTERS.MUSCLES } // або BODY_PARTS, EQUIPMENT
-//      }));
-// TODO: при завантаженні — зробити Muscles активною і кинути event
+const filtersList = document.querySelector('.filters[role="tablist"]');
+const filterButtons = document.querySelectorAll(
+  '.filters[role="tablist"] .filters__btn'
+);
+
+const setActiveButton = clickedBtn => {
+  filterButtons.forEach(btn => btn.classList.remove('is-active'));
+  clickedBtn.classList.add('is-active');
+};
+
+const dispatchFilterChange = filter => {
+  window.dispatchEvent(
+    new CustomEvent(EVENTS.FILTER_CHANGED, {
+      detail: { filter },
+    })
+  );
+};
+
+const handleFilterClick = e => {
+  const btn = e.target.closest('.filters__btn');
+  if (!btn) return;
+  if (btn.classList.contains('is-active')) return;
+
+  const filter = btn.dataset.filter;
+  if (!Object.values(FILTERS).includes(filter)) {
+    console.warn(`Filters: невалідне значення data-filter="${filter}"`);
+    return;
+  }
+
+  setActiveButton(btn);
+  dispatchFilterChange(filter);
+};
+
+const initFilters = () => {
+  if (!filtersList) {
+    console.warn('Filters: контейнер .filters не знайдено в DOM');
+    return;
+  }
+
+  filtersList.addEventListener('click', handleFilterClick);
+  dispatchFilterChange(FILTERS.MUSCLES);
+};
+
+initFilters();

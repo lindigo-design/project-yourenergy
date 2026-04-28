@@ -4,3 +4,77 @@
    ============================================================ */
 
 /* TODO: стилі секції */
+
+/* === MOBILE (від 320px) === */
+.filters[role='tablist'] {
+  display: flex;
+  gap: 16px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  flex-wrap: wrap;
+}
+
+.filters__btn {
+  position: relative;
+  padding: 4px 0;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.5;
+  color: rgba(27, 27, 27, 0.4);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: color 0.25s ease;
+}
+
+.filters__btn:hover,
+.filters__btn:focus-visible {
+  color: rgba(27, 27, 27, 0.7);
+  outline: none;
+}
+
+/* Підкреслення знизу для активного табу */
+.filters__btn::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  background-color: #1b1b1b;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.25s ease;
+}
+
+.filters__btn.is-active {
+  color: #1b1b1b;
+}
+
+.filters__btn.is-active::after {
+  transform: scaleX(1);
+}
+
+/* === TABLET (від 768px) === */
+@media (min-width: 768px) {
+  .filters__btn {
+    font-size: 14px;
+  }
+
+  .filters[role='tablist'] {
+    gap: 20px;
+  }
+}
+
+/* === DESKTOP (від 1440px) === */
+@media (min-width: 1440px) {
+  .filters__btn {
+    font-size: 16px;
+  }
+
+  .filters[role='tablist'] {
+    gap: 28px;
+  }
+}
