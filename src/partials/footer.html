@@ -1,3 +1,50 @@
 <footer class="footer" data-section="footer">
-  <!-- TODO: Footer markup + subscription form -->
+  <div class="container footer-container">
+    <div class="footer-top">
+      <a href="./index.html" class="logo footer-logo">
+        <img src="./images/logo.svg" alt="Your Energy" width="121" height="40">
+      </a>
+
+      <p class="footer-slogan">Energize your life,<br>one workout at a time.</p>
+
+      <ul class="socials footer-socials no-dots">
+        <li class="socials-item">
+          <a href="https://www.facebook.com/goITclub/" target="_blank" rel="noopener noreferrer" class="socials-link">
+            <svg class="socials-icon" width="24" height="24" aria-hidden="true">
+              <use href="./images/sprite.svg#icon-facebook"></use>
+            </svg>
+          </a>
+        </li>
+        <li class="socials-item">
+          <a href="https://www.instagram.com/goitclub/" target="_blank" rel="noopener noreferrer" class="socials-link">
+            <svg class="socials-icon" width="24" height="24" aria-hidden="true">
+              <use href="./images/sprite.svg#icon-instagram"></use>
+            </svg>
+          </a>
+        </li>
+        <li class="socials-item">
+          <a href="https://www.youtube.com/c/GoIT" target="_blank" rel="noopener noreferrer" class="socials-link">
+            <svg class="socials-icon" width="24" height="24" aria-hidden="true">
+              <use href="./images/sprite.svg#icon-youtube"></use>
+            </svg>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="footer-bottom">
+      <p class="footer-subscribe-label">Subscribe to our newsletter</p>
+      <form class="footer-subscribe-form" id="subscribe-form" novalidate>
+        <input
+          type="email"
+          name="email"
+          placeholder="Email"
+          class="footer-subscribe-input"
+          autocomplete="email"
+          required
+        />
+        <button type="submit" class="footer-subscribe-btn">Send</button>
+      </form>
+    </div>
+  </div>
 </footer>
