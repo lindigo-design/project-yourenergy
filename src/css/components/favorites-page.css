@@ -1,0 +1,174 @@
+/* ============================================================
+   favorites-page.css — стилі секції "favorites-page"
+   Відповідальний: Вероніка Галлямова
+   Mobile-first: base → tablet (768px) → desktop (1280px)
+   ============================================================ */
+
+.favorites-section {
+  padding-top: 80px;
+  padding-bottom: 40px;
+  background-color: #f4f4f4;
+  color: #242424;
+  font-family: 'DM Sans', sans-serif;
+  min-height: 100vh;
+}
+
+.favorites-section .container {
+  max-width: 100%;
+  padding-inline: 20px;
+}
+
+.favorites-title {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 500;
+  font-size: 28px;
+  line-height: 1.17;
+  margin-bottom: 20px;
+}
+
+.favorites-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: stretch;
+}
+
+.favorites-quote-wrap {
+  width: 100%;
+}
+
+.favorites-list-wrapper {
+  flex-grow: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.favorites-empty-text {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  line-height: 1.29;
+  color: #242424;
+  text-align: center;
+  max-width: 318px;
+  padding-top: 20px;
+}
+
+.favorite-item {
+  background-color: #ffffff;
+  border-radius: 15px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  height: 141px;
+}
+
+.favorite-item-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.favorites-pagination {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 40px;
+}
+
+.favorites-pagination-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: none;
+  background: transparent;
+  color: rgba(36, 36, 36, 0.4);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.2;
+  cursor: pointer;
+  transition: all 250ms ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.favorites-pagination-btn:hover {
+  color: #242424;
+}
+
+.favorites-pagination-btn.is-active {
+  border: 1px solid #242424;
+  color: #242424;
+}
+
+.favorites-list {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 20px;
+  width: 100%;
+}
+
+@media screen and (min-width: 768px) {
+  .favorites-section {
+    padding-top: 64px;
+    padding-bottom: 64px;
+  }
+
+  .favorites-title {
+    font-size: 32px;
+    line-height: 1.37;
+    margin-bottom: 32px;
+  }
+
+  .favorites-wrapper {
+    gap: 32px;
+  }
+
+  .favorites-empty-text {
+    max-width: 554px;
+    padding-top: 80px;
+    font-size: 18px;
+  }
+
+  .favorites-list-wrapper {
+    max-height: 487px;
+  }
+
+  .favorites-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 32px 16px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .favorites-section {
+    padding-top: 90px;
+  }
+
+  .favorites-title {
+    margin-bottom: 32px;
+  }
+
+  .favorites-wrapper {
+    flex-direction: row;
+  }
+
+  .favorites-quote-wrap {
+    flex-shrink: 0;
+    width: 340px;
+  }
+
+  .favorites-empty-text {
+    max-width: 554px;
+    padding-top: 0;
+    font-size: 18px;
+  }
+
+  .favorites-list-wrapper {
+    max-height: 487px;
+    overflow-y: auto;
+  }
+}

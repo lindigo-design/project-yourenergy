@@ -1,15 +1,7 @@
-// ============================================================
-//  Робота з favorites у localStorage.
-//  Використовуйте ТІЛЬКИ ці функції. НЕ пишіть localStorage.getItem
-//  напряму у своїх файлах.
-// ============================================================
 
 import { LS_KEYS, EVENTS } from './constants.js';
 
-/**
- * Отримати всі улюблені вправи.
- * @returns {Array<Object>}
- */
+
 export function getFavorites() {
   try {
     const raw = localStorage.getItem(LS_KEYS.FAVORITES);

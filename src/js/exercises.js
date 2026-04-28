@@ -1,5 +1,5 @@
 import { getExercises } from './api.js';
-import { EVENTS } from './constants.js';
+import { EVENTS, PAGINATION } from './constants.js';
 import { showLoader, hideLoader } from './loader.js';
 
 const exercisesList = document.getElementById('exercises-container');
@@ -15,7 +15,7 @@ let currentCategory = '';
 let currentKeyword = '';
 let currentPage = 1;
 
-const getLimit = () => window.innerWidth >= 768 ? 12 : 9;
+const getLimit = () => window.innerWidth >= 768 ? PAGINATION.EXERCISES_DESKTOP : PAGINATION.EXERCISES_MOBILE;
 
 document.addEventListener(EVENTS.CATEGORY_SELECTED, async (event) => {
     const { filter, category } = event.detail;
@@ -77,14 +77,14 @@ function renderExerciseCards(exercises) {
                     <div class="ex-badge">WORKOUT</div>
                     <div class="ex-rating">
                         ${rating.toFixed(1)}
-                        <img src="./img/Star.svg" alt="star" width="16" height="16" />
+                        <svg width="16" height="16" aria-hidden="true"><use href="./images/sprite.svg#icon-star"></use></svg>
                     </div>
                     <button class="ex-start-btn" data-id="${_id}">
                         Start →
                     </button>
                 </div>
                 <h3 class="ex-title">
-                    <img src="./img/icon.svg" alt="" class="ex-icon" width="24" height="24" />
+                    <svg class="ex-icon" width="24" height="24" aria-hidden="true"><use href="./images/sprite.svg#icon-run"></use></svg>
                     ${name}
                 </h3>
                 <div class="ex-info">
@@ -99,7 +99,7 @@ function renderExerciseCards(exercises) {
     exercisesList.querySelectorAll('.ex-start-btn').forEach(btn => {
         btn.addEventListener('click', () => {
             document.dispatchEvent(
-                new CustomEvent(EVENTS.EXERCISE_OPEN, { detail: btn.dataset.id })
+                new CustomEvent(EVENTS.EXERCISE_OPEN, { detail: { id: btn.dataset.id } })
             );
         });
     });

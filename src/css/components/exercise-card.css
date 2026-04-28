@@ -1,0 +1,173 @@
+/* ============================================================
+   exercise-card.css — спільні стилі для карточки вправи
+   Відповідальний: Вероніка Галлямова
+   ============================================================ */
+
+.exercise-card {
+  background-color: #ffffff;
+  border-radius: 16px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  height: 141px;
+  min-width: 0;
+}
+
+/* ── Card header (badge + start) ─────────────────────────── */
+
+.exercise-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 25px; /* Added spacing to title */
+}
+
+.exercise-card-badge-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.exercise-card-badge {
+  display: inline-block;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.33;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  background-color: #ffffff;
+  color: #242424;
+  border: 1px solid #242424;
+  padding: 5px 7px;
+  border-radius: 15px;
+}
+
+/* ── Trash btn (Favorites) ───────────────────────────────── */
+
+.exercise-card-trash-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  color: #242424;
+  transition: color 250ms ease;
+}
+
+.exercise-card-trash-btn:hover {
+  color: #e63946;
+}
+
+.exercise-card-trash-btn svg {
+  width: 16px;
+  height: 16px;
+  stroke: currentColor;
+  fill: none;
+}
+
+/* ── Rating (Home) ───────────────────────────────────────── */
+
+.exercise-card-rating {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  line-height: 1.5;
+  color: #242424;
+}
+
+.exercise-card-rating-icon {
+  fill: #eea10c; /* Жовтий колір зірочки */
+}
+
+/* ── Start btn ───────────────────────────────────────────── */
+
+.exercise-card-start-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #242424;
+  transition: color 250ms ease;
+}
+
+.exercise-card-start-btn:hover {
+  color: #3ac0eb;
+}
+
+.exercise-card-start-btn svg {
+  width: 16px;
+  height: 16px;
+  stroke: currentColor;
+  fill: none;
+}
+
+/* ── Card title row (icon + name) ────────────────────────── */
+
+.exercise-card-title-wrap {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.exercise-card-icon-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  background-color: #242424;
+  border-radius: 50%;
+}
+
+.exercise-card-icon {
+  width: 14px;
+  height: 14px;
+  fill: #ffffff;
+}
+
+.exercise-card-title {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 1.33;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* ── Card info list (calories, body part, target) ────────── */
+
+.exercise-card-info-list {
+  display: flex;
+  gap: 10px;
+  min-width: 0;
+}
+
+@media screen and (min-width: 1280px) {
+  .exercise-card-info-list {
+    gap: 16px;
+  }
+}
+
+.exercise-card-info-item {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  line-height: 1.5;
+  color: rgba(36, 36, 36, 0.4);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  min-width: 0;
+}
+
+.exercise-card-info-value {
+  color: #242424;
+}

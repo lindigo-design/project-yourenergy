@@ -26,7 +26,7 @@ export const EVENTS = {
   FILTER_CHANGED: 'yourenergy:filter-changed',        // detail: { filter: 'Muscles' }
   CATEGORY_SELECTED: 'yourenergy:category-selected',  // detail: { filter, category }
   SEARCH_SUBMITTED: 'yourenergy:search-submitted',    // detail: { keyword }
-  EXERCISE_OPEN: 'yourenergy:exercise-open',          // detail: { exerciseId }
+  EXERCISE_OPEN: 'yourenergy:exercise-open',          // detail: { id }
   FAVORITES_CHANGED: 'yourenergy:favorites-changed',  // без detail
 };
 

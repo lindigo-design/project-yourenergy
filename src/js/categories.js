@@ -110,7 +110,9 @@ let resizeTimer;
 window.addEventListener('resize', () => {
     clearTimeout(resizeTimer);
     resizeTimer = setTimeout(() => {
-        currentPage = 1;
-        fetchAndRenderCategories();
+        if (categoriesWrapper && !categoriesWrapper.classList.contains('visually-hidden')) {
+            currentPage = 1;
+            fetchAndRenderCategories();
+        }
     }, 300);
 });
