@@ -1,6 +1,7 @@
 import { getExercises } from './api.js';
 import { EVENTS, PAGINATION } from './constants.js';
 import { showLoader, hideLoader } from './loader.js';
+import { createExerciseCardMarkup } from './exercise-card.js';
 
 const exercisesList = document.getElementById('exercises-container');
 const exercisesWrapper = document.querySelector('.exercises-wrapper');
@@ -77,14 +78,16 @@ function renderExerciseCards(exercises) {
                     <div class="ex-badge">WORKOUT</div>
                     <div class="ex-rating">
                         ${rating.toFixed(1)}
-                        <svg width="16" height="16" aria-hidden="true"><use href="./images/sprite.svg#icon-star"></use></svg>
+                        <svg width="14" height="14" aria-hidden="true"><use href="./images/sprite.svg#icon-star"></use></svg>
                     </div>
                     <button class="ex-start-btn" data-id="${_id}">
                         Start →
                     </button>
                 </div>
                 <h3 class="ex-title">
-                    <svg class="ex-icon" width="24" height="24" aria-hidden="true"><use href="./images/sprite.svg#icon-run"></use></svg>
+                    <span class="ex-icon-wrap">
+                        <svg class="ex-icon" width="14" height="16" aria-hidden="true"><use href="./images/sprite.svg#icon-run"></use></svg>
+                    </span>
                     ${name}
                 </h3>
                 <div class="ex-info">
