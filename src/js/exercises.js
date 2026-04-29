@@ -1,6 +1,7 @@
 import { getExercises } from './api.js';
 import { EVENTS, PAGINATION } from './constants.js';
 import { showLoader, hideLoader } from './loader.js';
+import { createExerciseCardMarkup } from './exercise-card.js';
 
 const exercisesList = document.getElementById('exercises-container');
 const exercisesWrapper = document.querySelector('.exercises-wrapper');
@@ -71,35 +72,14 @@ async function fetchAndRenderExercises() {
 
 function renderExerciseCards(exercises) {
     exercisesList.innerHTML = exercises
-        .map(({ _id, name, burnedCalories, bodyPart, target, rating }) => `
-            <li class="exercise-card">
-                <div class="ex-card-header">
-                    <div class="ex-badge">WORKOUT</div>
-                    <div class="ex-rating">
-                        ${rating.toFixed(1)}
-                        <svg width="16" height="16" aria-hidden="true"><use href="./images/sprite.svg#icon-star"></use></svg>
-                    </div>
-                    <button class="ex-start-btn" data-id="${_id}">
-                        Start →
-                    </button>
-                </div>
-                <h3 class="ex-title">
-                    <svg class="ex-icon" width="24" height="24" aria-hidden="true"><use href="./images/sprite.svg#icon-run"></use></svg>
-                    ${name}
-                </h3>
-                <div class="ex-info">
-                    <p>Burned calories: <span>${burnedCalories} / 3 min</span></p>
-                    <p>Body part: <span>${bodyPart}</span></p>
-                    <p>Target: <span>${target}</span></p>
-                </div>
-            </li>
-        `)
+        .map(exercise => createExerciseCardMarkup(exercise, false))
         .join('');
 
-    exercisesList.querySelectorAll('.ex-start-btn').forEach(btn => {
+    exercisesList.querySelectorAll('.exercise-card-start-btn').forEach(btn => {
         btn.addEventListener('click', () => {
+            const card = btn.closest('.exercise-card');
             document.dispatchEvent(
-                new CustomEvent(EVENTS.EXERCISE_OPEN, { detail: { id: btn.dataset.id } })
+                new CustomEvent(EVENTS.EXERCISE_OPEN, { detail: { id: card.dataset.id } })
             );
         });
     });

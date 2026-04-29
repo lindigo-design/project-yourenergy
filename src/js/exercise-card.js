@@ -10,7 +10,7 @@ export function createExerciseCardMarkup(exercise, isFavoritePage = true) {
        </button>`
     : `<div class="exercise-card-rating">
          <span class="exercise-card-rating-value">${rating ? Math.round(rating * 10) / 10 : '0.0'}</span>
-         <svg class="exercise-card-rating-icon" width="18" height="18">
+         <svg class="exercise-card-rating-icon" width="13" height="13">
            <use href="./images/sprite.svg#icon-star"></use>
          </svg>
        </div>`;
