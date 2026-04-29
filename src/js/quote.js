@@ -1,25 +1,39 @@
-// ============================================================
-//  ЦИТАТА ДНЯ + ІНФО "110 хвилин"
-//  Відповідальний: [ПОСТАВ ІМ'Я]
-//
-//  Що реалізувати (ТЗ п.20):
-//  - Запит getQuote() з api.js
-//  - Зберегти цитату + сьогоднішню дату в localStorage
-//    (LS_KEYS.QUOTE і LS_KEYS.QUOTE_DATE з constants.js)
-//  - ⚠️ ВАЖЛИВО: якщо сьогодні вже є цитата в localStorage —
-//    НЕ робити запит, брати з кешу (вимога ТЗ!)
-//  - Статичний блок "110 хвилин на день" — поруч
-//  - Використовується на index.html і favorites.html
-//
-//  Твоя розмітка: src/partials/quote.html
-//  Твої стилі:    src/css/components/quote.css
-// ============================================================
+function setupTextAdjustment() {
+  const textElement = document.querySelector('.js-info-text-mobile');
 
-import { getQuote } from './api.js';
-import { LS_KEYS } from './constants.js';
+  if (!textElement) {
+    setTimeout(setupTextAdjustment, 100);
+    return;
+  }
 
-// TODO: перевірити localStorage → якщо сьогоднішня дата,
-//       взяти цитату з кешу
-// TODO: якщо нема або дата інша → getQuote(),
-//       зберегти в localStorage разом з датою
-// TODO: відрендерити в блок цитати
+  if (!textElement.dataset.originalText) {
+    textElement.dataset.originalText = textElement.textContent.trim();
+  }
+
+  const originalText = textElement.dataset.originalText;
+
+  function adjustText() {
+    const width = window.innerWidth;
+    let maxLength;
+
+    if (width < 768) {
+      maxLength = 185;
+    } else if (width >= 768 && width < 1440) {
+      maxLength = 195;
+    } else {
+      maxLength = originalText.length;
+    }
+
+    if (originalText.length > maxLength) {
+      textElement.textContent =
+        originalText.substring(0, maxLength).trim() + '...';
+    } else {
+      textElement.textContent = originalText;
+    }
+  }
+
+  adjustText();
+  window.addEventListener('resize', adjustText);
+}
+
+setupTextAdjustment();

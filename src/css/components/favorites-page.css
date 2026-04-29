@@ -4,8 +4,6 @@
    Mobile-first: base → tablet (768px) → desktop (1280px)
    ============================================================ */
 
-/* ── Section ─────────────────────────────────────────────── */
-
 .favorites-section {
   padding-top: 80px;
   padding-bottom: 40px;
@@ -15,13 +13,10 @@
   min-height: 100vh;
 }
 
-/* Override container for this section */
 .favorites-section .container {
   max-width: 100%;
   padding-inline: 20px;
 }
-
-/* ── Title ────────────────────────────────────────────────── */
 
 .favorites-title {
   font-family: 'DM Sans', sans-serif;
@@ -30,8 +25,6 @@
   line-height: 1.17;
   margin-bottom: 20px;
 }
-
-/* ── Layout wrapper ──────────────────────────────────────── */
 
 .favorites-wrapper {
   display: flex;
@@ -48,170 +41,60 @@
   flex-grow: 1;
   min-width: 0;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow-y: auto;
+  flex-direction: column;
 }
-
-/* ── Empty state ─────────────────────────────────────────── */
 
 .favorites-empty-text {
   font-family: 'DM Sans', sans-serif;
   font-size: 14px;
   line-height: 1.29;
-  color: #242424;
+  color: rgba(36, 36, 36, 0.6);
   text-align: center;
   max-width: 318px;
-  padding-top: 20px;
+  margin-top: 40px;
+  margin-inline: auto;
 }
 
-/* ── Cards grid ──────────────────────────────────────────── */
+.favorites-pagination {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 40px;
+}
+
+.favorites-pagination-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: none;
+  background: transparent;
+  color: rgba(36, 36, 36, 0.4);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.2;
+  cursor: pointer;
+  transition: all 250ms ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.favorites-pagination-btn:hover {
+  color: #242424;
+}
+
+.favorites-pagination-btn.is-active {
+  border: 1px solid #242424;
+  color: #242424;
+}
 
 .favorites-list {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: minmax(0, 1fr);
   gap: 20px;
   width: 100%;
 }
-
-/* ── Single card ─────────────────────────────────────────── */
-
-.favorite-item {
-  background-color: #ffffff;
-  border-radius: 16px;
-  padding: 16px;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-/* ── Card header (badge + start) ─────────────────────────── */
-
-.favorite-item-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.favorite-item-badge-wrap {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.favorite-item-badge {
-  display: inline-block;
-  font-family: 'DM Sans', sans-serif;
-  font-size: 12px;
-  font-weight: 500;
-  line-height: 1.33;
-  letter-spacing: 0.02em;
-  text-transform: uppercase;
-  background-color: #242424;
-  color: #ffffff;
-  padding: 4px 8px;
-  border-radius: 4px;
-}
-
-.favorite-item-trash-btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 24px;
-  height: 24px;
-  color: #242424;
-  transition: color 250ms ease;
-}
-
-.favorite-item-trash-btn:hover {
-  color: #e63946;
-}
-
-.favorite-item-trash-btn svg {
-  width: 16px;
-  height: 16px;
-  stroke: currentColor;
-  fill: none;
-}
-
-.favorite-item-start-btn {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-family: 'DM Sans', sans-serif;
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 1.5;
-  color: #242424;
-  transition: color 250ms ease;
-}
-
-.favorite-item-start-btn:hover {
-  color: #3ac0eb;
-}
-
-.favorite-item-start-btn svg {
-  width: 16px;
-  height: 16px;
-  stroke: currentColor;
-  fill: none;
-}
-
-/* ── Card title row (icon + name) ────────────────────────── */
-
-.favorite-item-title-wrap {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.favorite-item-icon-wrap {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  width: 24px;
-  height: 24px;
-}
-
-.favorite-item-icon {
-  width: 24px;
-  height: 24px;
-}
-
-.favorite-item-title {
-  font-family: 'DM Sans', sans-serif;
-  font-weight: 500;
-  font-size: 20px;
-  line-height: 1.2;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-/* ── Card info list (calories, body part, target) ────────── */
-
-.favorite-item-info-list {
-  display: flex;
-  gap: 16px;
-}
-
-.favorite-item-info-item {
-  font-size: 12px;
-  line-height: 1.5;
-  color: #7a7a7a;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.favorite-item-info-value {
-  color: #242424;
-}
-
-/* ============================================================
-   TABLET (min-width: 768px)
-   ============================================================ */
 
 @media screen and (min-width: 768px) {
   .favorites-section {
@@ -231,22 +114,28 @@
 
   .favorites-empty-text {
     max-width: 554px;
-    padding-top: 80px;
+    margin-top: 60px;
     font-size: 18px;
   }
 
+  .favorites-list-wrapper {
+    min-height: 0;
+  }
+
   .favorites-list {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 32px 16px;
   }
 }
-
-/* ============================================================
-   DESKTOP (min-width: 1280px)
-   ============================================================ */
 
 @media screen and (min-width: 1280px) {
   .favorites-section {
     padding-top: 90px;
+  }
+
+  .favorites-section .container {
+    max-width: 1440px;
+    margin: 0 auto;
   }
 
   .favorites-title {
@@ -264,7 +153,12 @@
 
   .favorites-empty-text {
     max-width: 554px;
-    padding-top: 0;
+    margin: auto;
     font-size: 18px;
+  }
+
+  .favorites-list-wrapper {
+    max-height: 487px;
+    overflow-y: auto;
   }
 }

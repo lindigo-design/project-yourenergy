@@ -10,14 +10,21 @@
       name="description"
       content="YourEnergy — find exercises by muscle groups, body parts and equipment"
     />
+
+  <link rel="icon" type="image/png" href="/favicon-96x96.png?v=3" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=3" />
+  <link rel="shortcut icon" href="/favicon.ico?v=3" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=3" />
+  <link rel="manifest" href="/webmanifest.json?v=3" />
+
+
     <title>YourEnergy</title>
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    
     <link rel="stylesheet" href="./css/styles.css" />
   </head>
   <body>
     <!-- HEADER -->
     <load src="./partials/header.html" />
-
     <main>
       <!-- HERO -->
       <load src="./partials/hero.html" />
@@ -46,8 +53,7 @@
       ↑
     </button>
 
-    <!-- Dynamic modal mount point -->
-    <div id="modal-root"></div>
+    <load src="./partials/exercice-modal.html" />
 
     <script type="module" src="./main.js"></script>
   </body>
