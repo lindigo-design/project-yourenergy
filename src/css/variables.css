@@ -46,8 +46,8 @@
 
 
   /* Шрифти */
-  --font-family: "Ancizar Sans", sans-serif;
-  --second-family: "DM Sans", sans-serif;
+  --main-font: "DM Sans", sans-serif;
+  --second-font: "Ancizar Sans", sans-serif; 
 
 
   /* Розміри шрифтів */
@@ -63,7 +63,10 @@
   --fs-5xl: 56px;
   --fs-6xl: 74px;
 
-
+/* Вага шрифту */
+  --fw-regular: 400;
+  --fw-medium: 500; 
+  --fw-bold: 700;
 
   /* Відступи */
   --space-xs: 4px; 

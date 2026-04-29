@@ -3,6 +3,9 @@
    Відповідальний: [людина з задачі №11]
    ============================================================ */
 
+/* @import "modern-normalize"; */
+
+
 *,
 *::before,
 *::after {
@@ -18,21 +21,32 @@ html {
   scroll-behavior: smooth;
 }
 
+/* 2. Базові стилі */
 body {
-  font-family: var(--font-primary);
-  font-size: var(--fs-md);
-  color: var(--color-text);
-  background-color: var(--color-bg);
-  line-height: 1.5;
+  font-family: var(--main-font); 
+  font-size: var(--fs-sm);         
+  color: var(--color-text-dark);    
+  background-color: var(--color-bg-main); 
+  line-height: 1.5; 
   min-height: 100vh;
   -webkit-font-smoothing: antialiased;
 }
 
+/* Налаштування заголовків за макетом */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--second-font); 
+  font-weight: var(--fw-medium);
+  line-height: 1.2;
+}
+
+/* Адаптивні картинки */
 img {
   max-width: 100%;
+  height: auto; 
   display: block;
 }
 
+/* Кнопки та посилання */
 button {
   font: inherit;
   cursor: pointer;
@@ -44,37 +58,43 @@ button {
 a {
   color: inherit;
   text-decoration: none;
+  transition: color var(--transition);
 }
 
-ul,
-ol {
+ul, ol {
   list-style: none;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  font-weight: 500;
-  line-height: 1.2;
-}
-
-input,
-textarea,
-select {
+input, textarea, select {
   font: inherit;
 }
 
-/* Контейнер */
+/* 3. Адаптивний Контейнер */
 .container {
-  max-width: var(--container-max);
-  margin: 0 auto;
-  padding-inline: var(--container-padding);
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--container-padding-mobile);
+  padding-right: var(--container-padding-mobile);
 }
 
-/* Утиліта для прихованих елементів */
-[hidden] {
-  display: none !important;
+@media screen and (min-width: 768px) {
+  .container {
+    max-width: 768px;
+    padding-left: var(--container-padding-tablet);
+    padding-right: var(--container-padding-tablet);
+  }
 }
 
-/* A11y — приховати візуально, лишити для скрінрідерів */
+@media screen and (min-width: 1440px) {
+  .container {
+    max-width: calc(var(--container-max-width) + (var(--container-padding-desktop) * 2));
+    padding-left: var(--container-padding-desktop);
+    padding-right: var(--container-padding-desktop);
+  }
+}
+
+/* 4. Допоміжні класи */
 .visually-hidden {
   position: absolute;
   width: 1px;
@@ -86,4 +106,8 @@ select {
   clip-path: inset(100%);
   clip: rect(0 0 0 0);
   overflow: hidden;
+}
+
+[hidden] {
+  display: none !important;
 }
