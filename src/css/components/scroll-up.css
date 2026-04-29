@@ -4,3 +4,66 @@
    ============================================================ */
 
 /* TODO: стилі секції */
+/* ===== Scroll button ===== */
+
+.scroll-up {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 1000;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 40px;
+  height: 40px;
+
+  border-radius: 50%;
+  border: none;
+
+  background-color: #242424;
+  cursor: pointer;
+
+  transition: transform 250ms ease, opacity 250ms ease;
+}
+
+.scroll-up[hidden] {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* ===== ICON (mobile first) ===== */
+
+.scroll-up-icon {
+  width: 15px;
+  height: 15px;
+
+  fill:#f4f4f4;
+;
+  stroke: #f4f4f4;
+
+  stroke-width: 2; /*  замість 0.3px (реалістично для браузера) */
+  stroke-linecap: round;
+  stroke-linejoin: round;
+
+  transform-origin: center;
+}
+
+/* ===== Tablet / Desktop ===== */
+
+@media (min-width: 768px) {
+  .scroll-up {
+    width: 100px;
+    height: 100px;
+    right: 32px;
+    bottom: 32px;
+  }
+
+  .scroll-up-icon {
+    width: 33px;
+    height: 33px;
+
+    stroke-width: 1.5; /* трохи товстіше, щоб не "зникала" */
+  }
+}
