@@ -1,256 +1,58 @@
+.exercises-section {
+  background-color: #f4f4f4;
+  padding-top: 40px;
+  padding-bottom: 80px;
+}
+
+.exercises-main-container {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.exercises-left-column {
+  width: 100%;
+}
+
+.exercises-right-column {
+  flex-grow: 1;
+}
+
 .exercises-wrapper {
   width: 100%;
 }
 
 .exercises-list {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
   gap: 20px;
   list-style: none;
   padding: 0;
   margin: 0;
-}
-
-.exercise-card {
-  background: #ffffff;
-  border-radius: 15px;
-  padding: 16px;
-  width: 100%;
-  max-width: 335px;
-  min-height: 141px;
-  margin: 0 auto;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
-}
-
-.ex-card-header {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 12px;
-}
-
-.ex-badge {
-  font-family: var(--font-primary);
-  font-size: 11px;
-  font-weight: 500;
-  color: #242424;
-  border: 1px solid #242424;
-  border-radius: 28px;
-  padding: 4px 10px;
-  letter-spacing: 0.04em;
-}
-
-.ex-rating {
-  font-family: var(--font-primary);
-  font-size: 14px;
-  color: #242424;
-  display: flex;
-  align-items: center;
-  gap: 4px;
-}
-
-.ex-start-btn {
-  margin-left: auto;
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  font-family: var(--font-primary);
-  font-size: 14px;
-  font-weight: 400;
-  color: #242424;
-  background: none;
-  border: none;
-  cursor: pointer;
-  transition: opacity var(--transition);
-  padding: 0;
-}
-
-.ex-start-btn:hover {
-  opacity: 0.7;
-}
-
-.ex-start-btn svg {
-  width: 16px;
-  height: 16px;
-}
-
-.ex-title {
-  font-family: var(--font-primary);
-  font-size: 20px;
-  font-weight: 400;
-  color: #242424;
-  margin-bottom: 8px;
-  margin-left: -36px;
-  text-transform: capitalize;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  gap: 8px;
-  line-height: 20px;
-  text-align: left;
-}
-
-.ex-icon {
-  width: 24px;
-  height: 24px;
-  flex-shrink: 0;
-  margin-left: 0;
-}
-
-.ex-title::before {
-  content: '';
-  display: inline-block;
-  width: 28px;
-  height: 28px;
-  background-image: url('../img/icons.svg#icon-run');
-  background-size: contain;
-  background-repeat: no-repeat;
-  flex-shrink: 0;
-}
-
-.ex-info {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 4px 16px;
-}
-
-.ex-info p {
-  font-family: var(--font-primary);
-  font-size: 12px;
-  color: rgba(36, 36, 36, 0.6);
-  margin: 0;
-}
-
-.ex-info span {
-  font-weight: 500;
-  color: #242424;
 }
 
 @media screen and (min-width: 768px) {
-    .exercises-list {
-    display: grid;
+  .exercises-list {
     grid-template-columns: repeat(2, 1fr);
-    gap: 15px;
-  }
-
-  .exercise-card {
-    max-width: 100%;
-    padding: 32px 15px;
+    gap: 32px 16px;
   }
 }
 
-@media screen and (min-width: 1440px) {
-  .exercises-list {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
+@media screen and (min-width: 1280px) {
+  .exercises-main-container {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 32px;
+  }
+
+  .exercises-left-column {
+    width: 340px;
+    flex-shrink: 0;
   }
 
   .exercises-wrapper {
-  width: 100%;
-  padding: 0 32px;
-}
-}
-
-.exercises-wrapper {
-  width: 100%;
-}
-
-.exercises-list {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.exercise-card {
-  background: #ffffff;
-  border-radius: 15px;
-  padding: 16px;
-  width: 100%;
-  max-width: 335px;
-  min-height: 141px;
-  margin: 0;
-}
-
-.ex-card-header {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 12px;
-}
-
-.ex-badge {
-  font-family: var(--font-primary);
-  font-size: 11px;
-  font-weight: 400;
-  color: #242424;
-  border: 1px solid #242424;
-  border-radius: 15px;
-  padding: 5px 8px;
-  line-height: 1;
-  white-space: nowrap;
-}
-
-.ex-rating {
-  font-family: var(--font-primary);
-  font-size: 14px;
-  color: #242424;
-  display: flex;
-  align-items: center;
-  gap: 2px;
-}
-
-.ex-start-btn {
-  margin-left: auto;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-family: var(--font-primary);
-  font-size: 14px;
-  font-weight: 400;
-  color: #242424;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 0;
-  transition: opacity var(--transition);
-  white-space: nowrap;
-}
-
-.ex-start-btn:hover {
-  opacity: 0.7;
-}
-
-.ex-start-btn svg {
-  width: 16px;
-  height: 16px;
-}
-
-.ex-icon {
-  width: 24px;
-  height: 24px;
-  flex-shrink: 0;
-}
-
-.ex-info {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-
-.ex-info p {
-  font-family: var(--font-primary);
-  font-size: 12px;
-  color: rgba(36, 36, 36, 0.6);
-  margin: 0;
-  line-height: 18px;
-}
-
-.ex-info span {
-  font-weight: 500;
-  color: #242424;
+    padding-left: 0; /* Прибираємо старий відступ, тепер він регулюється через gap */
+  }
 }
 
 .no-results {
@@ -259,28 +61,4 @@
   font-family: var(--font-primary);
   font-size: 16px;
   padding: 48px 0;
-}
-
-@media screen and (min-width: 768px) {
-  .exercises-list {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 15px;
-  }
-
-  .exercise-card {
-    max-width: 100%;
-    padding: 32px 15px;
-  }
-}
-
-@media screen and (min-width: 1440px) {
-  .exercises-list {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-  }
-
-  .exercises-wrapper {
-    padding-left: 508px;
-  }
 }
