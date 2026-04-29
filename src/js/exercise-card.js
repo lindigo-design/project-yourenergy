@@ -25,7 +25,7 @@ export function createExerciseCardMarkup(exercise, isFavoritePage = true) {
         <button class="exercise-card-start-btn" type="button">
           Start
           <svg width="16" height="16">
-            <use href="./images/sprite.svg#icon-arrow-top-right"></use>
+            <use href="./images/sprite.svg#icon-arrow-right"></use>
           </svg>
         </button>
       </div>
