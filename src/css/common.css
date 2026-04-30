@@ -86,7 +86,7 @@ input, textarea, select {
   }
 }
 
-@media screen and (min-width: 1440px) {
+@media screen and (min-width: 1280px) {
   .container {
     max-width: calc(var(--container-max-width) + (var(--container-padding-desktop) * 2));
     padding-left: var(--container-padding-desktop);
