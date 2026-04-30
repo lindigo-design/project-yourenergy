@@ -1,5 +1,5 @@
-import axios from "axios";
 import { subscribe } from './api.js';
+import { EMAIL_PATTERN } from './constants.js';
 import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
 
