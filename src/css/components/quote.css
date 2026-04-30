@@ -1,3 +1,4 @@
+
 .quote-wrapper {
   margin-top: 32px;
 }
@@ -347,7 +348,7 @@
 }
 
 /* Desktop home */
-@media screen and (min-width: 1440px) {
+@media screen and (min-width: 1280px) {
   .quote-wrapper {
     margin-top: 0;
     margin-left: 0;
@@ -398,7 +399,7 @@
   }
 }
 
-@media screen and (min-width: 1440px) {
+@media screen and (min-width: 1280px) {
   .favorites-wrapper {
     display: flex;
     align-items: flex-start;
