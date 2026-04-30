@@ -42,7 +42,23 @@ document.addEventListener(EVENTS.EXERCISE_OPEN, async (event) => {
 });
 
 function renderStars() {
-  return '★'.repeat(4) + '☆';
+  return `
+    <svg class="star active" width="18" height="18" style="width:18px;height:18px">
+      <use href="./images/sprite.svg#icon-star"></use>
+    </svg>
+    <svg class="star active" width="18" height="18" style="width:18px;height:18px">
+      <use href="./images/sprite.svg#icon-star"></use>
+    </svg>
+    <svg class="star active" width="18" height="18" style="width:18px;height:18px">
+      <use href="./images/sprite.svg#icon-star"></use>
+    </svg>
+    <svg class="star active" width="18" height="18" style="width:18px;height:18px">
+      <use href="./images/sprite.svg#icon-star"></use>
+    </svg>
+    <svg class="star" width="18" height="18" style="width:18px;height:18px">
+      <use href="./images/sprite.svg#icon-star"></use>
+    </svg>
+  `;
 }
 
 function renderModal(data) {
@@ -121,13 +137,7 @@ function openModal() {
   });
 }
   
-  favBtn.addEventListener('click', () => {
-    toggleFavorite(currentExerciseData);
-    const isNowFav = isFavorite(currentExerciseData._id);
-    const textSpan = favBtn.querySelector('span');
-    textSpan.textContent = isNowFav ? 'Remove from favorites' : 'Add to favorites';
-  });
-
+  
 
 function closeModal() {
   backdrop.classList.add('is-hidden');

@@ -69,6 +69,27 @@
    stroke: #f4f4f4;
 }
 
+.stars {
+   display: flex;
+   gap: 4px;
+   align-items: center;
+   height: 18px;
+}
+
+
+.star {
+   width: 18px;
+   height: 18px;
+   flex: 0 0 18px;
+   fill: #444;
+}
+
+
+
+.star.active {
+   fill: #eea10c;
+}
+
 /* ========================================= */
 /* ЛЕЙАУТ (РОЗТАШУВАННЯ) */
 /* ========================================= */
@@ -117,7 +138,6 @@
 /* РЕЙТИНГ */
 .modal-rating {
    width: 118px;
-   height: 18px;
    font-weight: 400;
    font-size: 12px;
    line-height: 1.5;
@@ -125,13 +145,9 @@
    display: flex;
    align-items: center;
    gap: 4px;
-   margin-bottom: 16px;
+   margin-bottom: 0px;
 }
 
-.modal-rating svg {
-   fill: #eea10c;
-   /* колір зірочок */
-}
 
 
 /* ЛІНІЯ (РОЗДІЛЮВАЧ) */
@@ -288,6 +304,29 @@
    border: 1px solid #f4f4f4;
 }
 
+.modal-rating svg {
+   width: 18px !important;
+   height: 18px !important;
+}
+
+.modal-rating use {
+   width: 18px;
+   height: 18px;
+}
+.modal-rating .star {
+   width: 18px !important;
+   height: 18px !important;
+}
+
+.modal-rating .star use {
+   width: 100% !important;
+   height: 100% !important;
+}
+
+.modal-rating .star {
+   display: inline-block;
+}
+
 /* ========================================= */
 /* АДАПТИВНІСТЬ ДЛЯ МОБІЛОК (до 768px) */
 /* ========================================= */
@@ -328,4 +367,3 @@
       /* На мобілці кнопки на всю ширину */
    }
 }
-
