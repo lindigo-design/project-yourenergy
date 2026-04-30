@@ -41,24 +41,19 @@ document.addEventListener(EVENTS.EXERCISE_OPEN, async (event) => {
   }
 });
 
-function renderStars() {
-  return `
-    <svg class="star active" width="18" height="18" style="width:18px;height:18px">
-      <use href="./images/sprite.svg#icon-star"></use>
-    </svg>
-    <svg class="star active" width="18" height="18" style="width:18px;height:18px">
-      <use href="./images/sprite.svg#icon-star"></use>
-    </svg>
-    <svg class="star active" width="18" height="18" style="width:18px;height:18px">
-      <use href="./images/sprite.svg#icon-star"></use>
-    </svg>
-    <svg class="star active" width="18" height="18" style="width:18px;height:18px">
-      <use href="./images/sprite.svg#icon-star"></use>
-    </svg>
-    <svg class="star" width="18" height="18" style="width:18px;height:18px">
-      <use href="./images/sprite.svg#icon-star"></use>
-    </svg>
-  `;
+function renderStars(rating) {
+  const rounded = Math.round(rating || 0);
+  let stars = '';
+
+  for (let i = 1; i <= 5; i++) {
+    stars += `
+      <svg class="star ${i <= rounded ? 'active' : ''}" width="18" height="18">
+        <use href="./images/sprite.svg#icon-star"></use>
+      </svg>
+    `;
+  }
+
+  return stars;
 }
 
 function renderModal(data) {
@@ -79,7 +74,7 @@ function renderModal(data) {
           <h2 class="modal-title">${name}</h2>
           <div class="modal-rating">
           <span>${rating.toFixed(1)}</span>
-          <span class="stars">${renderStars()}</span>
+          <span class="stars">${renderStars(rating)}</span>
           </div>
           <div class="divider divider-top"></div>
           <ul class="modal-stats">
