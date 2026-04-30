@@ -1,3 +1,71 @@
 <section class="hero" data-section="hero">
-  <!-- TODO: Hero markup -->
+  <div class="container">
+    <div class="hero-top">
+      <div class="hero-content">
+        <div class="hero-heading">
+          <svg class="hero-sun" aria-hidden="true" focusable="false">
+            <use href="./images/sprite.svg#icon-sun"></use>
+          </svg>
+          <h1 class="hero-title">
+            <span class="hero-title-l1">Get <em>Body</em> in</span>
+            <span class="hero-title-l2">shape, Stay healthy</span>
+          </h1>
+        </div>
+        <p class="hero-desc">
+          Transform your physique and embrace a healthier lifestyle with our comprehensive fitness and nutrition support.
+        </p>
+      </div>
+
+      <!-- Desktop only: thumbnail + tags on the right -->
+      <div class="hero-aside">
+        <div class="hero-thumb">
+          <img
+            src="./images/hero/young-women-doing-fitness-outdoors-together%201.png"
+            srcset="./images/hero/young-women-doing-fitness-outdoors-together@2x.png 2x"
+            alt="Women doing fitness outdoors together"
+            width="256"
+            height="171"
+          >
+        </div>
+        <ul class="hero-tags">
+          <li class="hero-tag">#Sport</li>
+          <li class="hero-tag">#Healthy</li>
+          <li class="hero-tag">#Workout</li>
+          <li class="hero-tag">#Diet</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="hero-image">
+      <picture>
+        <source
+          media="(min-width: 1440px)"
+          srcset="
+            ./images/hero/women-sportswear-working-out-outdoors%201.png    1x,
+            ./images/hero/women-sportswear-working-out-outdoors@2x.png     2x
+          "
+        >
+        <source
+          media="(min-width: 768px)"
+          srcset="
+            ./images/hero/women-sportswear-working-out-outdoors%201_tab.png    1x,
+            ./images/hero/women-sportswear-working-out-outdoors%201_tab@2x.png 2x
+          "
+        >
+        <img
+          src="./images/hero/women-sportswear-working-out-outdoors%201_mob.png"
+          srcset="./images/hero/women-sportswear-working-out-outdoors%201_mob@2x.png 2x"
+          alt="Women working out outdoors"
+        >
+      </picture>
+    </div>
+
+    <!-- Tablet / Mobile: tags below image -->
+    <ul class="hero-tags hero-tags-bottom">
+      <li class="hero-tag">#Sport</li>
+      <li class="hero-tag">#Healthy</li>
+      <li class="hero-tag">#Workout</li>
+      <li class="hero-tag">#Diet</li>
+    </ul>
+  </div>
 </section>
