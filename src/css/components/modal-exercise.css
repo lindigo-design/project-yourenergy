@@ -83,8 +83,6 @@
    fill: #444;
 }
 
-
-
 .star.active {
    fill: #eea10c;
 }
@@ -155,8 +153,6 @@
    line-height: 1;
 }
 
-
-
 /* ЛІНІЯ (РОЗДІЛЮВАЧ) */
 .divider {
    width: 100%;
@@ -198,19 +194,10 @@
 }
 
 .modal-stats span:last-child {
-   font-weight: 500;
-   font-size: 14px;
-   line-height: 1.5;
-   color: #f4f4f4;
-}
-
-.modal-stats span:last-child {
-   /* Підзаголовок в даних (значення) */
    font-weight: 400;
    font-size: 14px;
    line-height: 1.5;
    color: #f4f4f4;
-   /* Зробив білим, як на макеті */
 }
 
 /* КАЛОРІЇ */
@@ -270,10 +257,8 @@
    border: 1px solid #242424;
    gap: 8px;
    flex: 0 1 auto;
-      flex-grow: 1;
-         flex-shrink: 1;
-      
-   
+   flex-grow: 1;
+   flex-shrink: 1;
 }
 
 .fav-btn:hover,
@@ -318,43 +303,138 @@
 
 
 
-/* ========================================= */
-/* АДАПТИВНІСТЬ ДЛЯ МОБІЛОК (до 768px) */
-/* ========================================= */
 @media screen and (max-width: 767px) {
+
    .modal-window {
-      width: 90%;
-      padding: 32px 16px;
+      width: 335px;
+      max-width: 100%;
+      padding: 40px 20px;
+      border-radius: 20px;
+
+      max-height: 95vh;
+         overflow-y: auto;
    }
 
    .modal-layout {
       flex-direction: column;
-      /* Ставимо картинку над текстом */
-      align-items: center;
-      gap: 24px;
-   }
-
-   .modal-info,
-   .modal-buttons {
-      width: 100%;
+      gap: 20px;
+      align-items: stretch;
    }
 
    .modal-img {
       width: 100%;
-      height: auto;
-      aspect-ratio: 1 / 1;
-      /* Зберігає пропорції */
+      height: 258px;
+      border-radius: 12px;
+   }
+
+   .modal-info {
+      width: 100%;
+   }
+
+   .modal-title {
+      font-size: 20px;
+      margin-bottom: 10px;
+   }
+    .close-btn {
+      width: 24px;
+      height: 24px;
+      top: 14px;
+      right: 14px;
+   }
+   
+   .close-btn svg {
+      width: 24px;
+      height: 24px;
+   }
+   
+
+   .modal-rating {
+      margin-bottom: 20px;
+   }
+
+   .divider-top {
+      margin-top: 0;
+      margin-bottom: 20px;
+   }
+
+   .modal-stats {
+      gap: 20px;
+      margin-bottom: 20px;
+   }
+
+   .divider-bottom {
+      margin-top: 0;
+      margin-bottom: 20px;
+   }
+
+   .modal-description {
+      margin-bottom: 40px;
    }
 
    .modal-buttons {
+      display: flex;
       flex-wrap: wrap;
-      /* Кнопки можуть переноситись на новий рядок */
-      height: auto;
+      gap: 6px;
+      margin-top: 0;
+      flex-direction: column;
    }
 
    .fav-btn,
    .rating-btn {
       width: 100%;
-      /* На мобілці кнопки на всю ширину */
+      height: 44px;
+      flex: none;
+      margin-left: 0;
+}
+     
+
+}
+
+@media screen and (min-width: 768px) and (max-width: 1279px) {
+
+   .modal-window {
+      width: 704px;
+      padding: 32px;
+   }
+
+   .modal-layout {
+      flex-direction: row;
+      gap: 28px;
+      align-items: flex-start;
+   }
+
+   .modal-img {
+      width: 270px;
+      height: 259px;
+   }
+
+   .modal-info {
+      flex: 1;
+   }
+
+   .modal-rating {
+      margin-bottom: 16px;
+   }
+
+   .divider-top {
+      margin-top: 16px;
+      margin-bottom: 8px;
+   }
+
+   .modal-stats {
+      column-gap: 16px;
+   }
+
+   .modal-description {
+      margin-bottom: 0;
+   }
+
+   .modal-buttons {
+      margin-top: 32px;
+      gap: 8px;
+   }
+
+   .modal-exercise-btn {
+      font-size: 16px;
    }
 }
