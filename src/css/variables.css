@@ -42,13 +42,13 @@
   --color-pagination-inactive: #d4d4d4;
   --color-rating-inactive: rgba(244, 244, 244, 0.2);
 
-
-
+  /* Кольори, які використовуються у футері */
+  --color-black: #242424;
+  --color-white: #f4f4f4;
 
   /* Шрифти */
   --main-font: "DM Sans", sans-serif;
   --second-font: "Ancizar Sans", sans-serif; 
-
 
   /* Розміри шрифтів */
   --fs-xxs: 12px; 
