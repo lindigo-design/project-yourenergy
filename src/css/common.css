@@ -17,10 +17,7 @@
   padding: 0;
 }
 
-html,
-body {
-  overflow-x: clip;
-}
+
 
 html {
   scroll-behavior: smooth;
@@ -28,6 +25,9 @@ html {
 
 /* 2. Базові стилі */
 body {
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: clip;
   font-family: var(--main-font); 
   font-size: var(--fs-sm);         
   color: var(--color-text-dark);    
