@@ -45,6 +45,7 @@
   /* Кольори, які використовуються у футері */
   --color-black: #242424;
   --color-white: #f4f4f4;
+  --color-light-grey: #b3b3b3;
 
   /* Шрифти */
   --main-font: "DM Sans", sans-serif;
