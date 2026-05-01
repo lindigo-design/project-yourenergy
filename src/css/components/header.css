@@ -149,18 +149,22 @@ button {
   width: 44px;
   height: 44px;
   border-radius: 10px;
-  border: 1px solid rgba(36, 36, 36, 0.10);
-  transition: border-color 0.3s ease, transform 0.3s ease;
+  border: 1px solid #2424241A !important;
+  background-color: transparent;
+  transition: border-color 0.3s ease, background-color 0.3s ease;
 }
 
-.socials-link:hover {
-  border-color: rgba(27, 27, 27, 0.5);
-  transform: translateY(-2px);
+.socials-link:hover,
+.socials-link:focus {
+  border-color: rgba(36, 36, 36, 0.5);
+  background-color: rgba(36, 36, 36, 0.05);
 }
 
 .socials-icon {
-  color: #1b1b1b;
-  fill-opacity: 0.8;
+  display: block;
+  fill: #242424 !important;
+  width: 24px;
+  height: 24px;
 }
 
 @media screen and (max-width: 767px) {
@@ -171,8 +175,7 @@ button {
     padding: 20px 15px;
   }
   .socials-icon {
-    color: #f4f4f4;
-    fill-opacity: 1;
+    fill: #f4f4f4;
   }
 }
 
