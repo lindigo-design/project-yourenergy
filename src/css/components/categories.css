@@ -80,10 +80,10 @@
 }
 
 .pagination-btn {
-  min-width: 31px;
-  height: 31px;
-  border-radius: 18px;
-  border: 1px solid var(--color-border);
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1px solid transparent;
   background: none;
   font-family: var(--font-primary);
   font-size: 14px;
@@ -93,19 +93,55 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 6px 12px;
+  padding: 0;
 }
 
 .pagination-btn.active {
   border: 1px solid var(--color-border-solid);
   color: var(--color-border-solid);
   font-weight: 700;
-  background: none;
 }
 
 .pagination-btn:hover:not(.active) {
   border-color: var(--color-border-solid);
   color: var(--color-border-solid);
+}
+
+.pagination-nav-btn {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1px solid #242424;
+  background: none;
+  font-family: var(--font-primary);
+  font-size: 16px;
+  color: #242424;
+  cursor: pointer;
+  transition: all var(--transition);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+.pagination-nav-btn:disabled {
+  border-color: rgba(36, 36, 36, 0.2);
+  color: rgba(36, 36, 36, 0.25);
+  cursor: default;
+}
+
+.pagination-nav-btn:not(:disabled):hover {
+  background: rgba(36, 36, 36, 0.05);
+}
+
+.pagination-ellipsis {
+  font-family: var(--font-primary);
+  font-size: 14px;
+  color: rgba(36, 36, 36, 0.6);
+  display: flex;
+  align-items: center;
+  height: 38px;
+  padding: 0 2px;
 }
 
 .no-results {
@@ -131,38 +167,16 @@
   }
 }
 
-@media screen and (min-width: 1280px) {
-  .categories-wrapper {
-    width: 100%;
-    padding: 0;
-    margin: 0;
-  }
-
+@media screen and (min-width: 1440px) {
   .categories-list {
-    display: grid;
-    grid-template-columns: repeat(3, calc((100% - 64px) / 3));
-    column-gap: 32px;
-    row-gap: 15px;
-    width: 100%;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
     max-width: 100%;
-    margin: 0;
   }
 
   .category-item {
     width: 100%;
-    max-width: 100%;
     height: 242px;
-    margin: 0;
-  }
-
-  .category-card-btn {
-    width: 100%;
-    height: 100%;
-  }
-
-  .category-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+    max-width: 100%;
   }
 }

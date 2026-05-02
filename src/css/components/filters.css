@@ -27,6 +27,10 @@
   gap: 16px;
 }
 
+.exercises-sidebar {
+  display: none;
+}
+
 .filter-list {
   display: flex;
   gap: 28px;
@@ -76,6 +80,7 @@
 
 .search-form {
   width: 100%;
+  margin-top: 16px;
 }
 
 .search-input-wrapper {
@@ -103,6 +108,31 @@
   color: rgba(36, 36, 36, 0.6);
 }
 
+.search-clear-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: rgba(36, 36, 36, 0.6);
+  transition: color var(--transition);
+  padding: 0;
+  flex-shrink: 0;
+}
+
+.search-clear-btn svg {
+  width: 12px;
+  height: 12px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+}
+
+.search-clear-btn:hover {
+  color: #242424;
+}
+
 .search-submit-btn {
   display: flex;
   align-items: center;
@@ -119,6 +149,9 @@
 .search-submit-btn svg {
   width: 16px;
   height: 16px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
 }
 
 .search-submit-btn:hover {
@@ -128,13 +161,14 @@
 @media screen and (min-width: 768px) {
   .exercises-controls {
     display: flex;
-    flex-direction: row-reverse;
+    flex-direction: row;
     align-items: center;
     justify-content: space-between;
   }
 
   .search-form {
     width: 264px;
+    margin-top: 0;
   }
 
   .exercises-main-title {
@@ -171,5 +205,16 @@
 
   .search-form {
     width: 320px;
+  }
+
+  .exercises-body {
+    display: grid;
+    grid-template-columns: 444px 1fr;
+    gap: 32px;
+    align-items: start;
+  }
+
+  .exercises-sidebar {
+    display: block;
   }
 }

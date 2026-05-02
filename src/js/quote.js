@@ -19,11 +19,54 @@ function saveQuoteToCache(data) {
   localStorage.setItem(LS_KEYS.QUOTE_DATE, getTodayString());
 }
 
+function populateSidebarWrapper() {
+  const wrapper = document.querySelector('.quote-wrapper');
+  if (!wrapper || wrapper.innerHTML.trim()) return;
+
+  wrapper.innerHTML = `
+    <div class="quote-card">
+      <div class="quote-card-top">
+        <div class="quote-card-icon-wrap">
+          <svg width="18" height="18" aria-hidden="true"><use href="./images/sprite.svg#icon-run"></use></svg>
+        </div>
+        <p class="quote-card-title">Quote of the day</p>
+        <svg class="quote-mark" width="24" height="24" aria-hidden="true"><use href="./images/sprite.svg#icon-quote"></use></svg>
+      </div>
+      <blockquote class="quote-text"></blockquote>
+      <p class="quote-author"></p>
+    </div>
+    <div class="quote-photo-wrap">
+      <img
+        src="./images/hero/women-sportswear-working-out-outdoors (2) 1_tab.png"
+        srcset="./images/hero/women-sportswear-working-out-outdoors (2) 1_tab@2x.png 2x"
+        alt="Women working out"
+        class="quote-photo"
+        width="290"
+        height="242"
+      />
+    </div>
+    <div class="daily-norm-card">
+      <div class="daily-norm-header">
+        <div class="daily-norm-icon-wrap">
+          <svg width="20" height="20" aria-hidden="true"><use href="./images/sprite.svg#icon-dumbbell"></use></svg>
+        </div>
+        <div>
+          <p class="daily-norm-time">110 min</p>
+          <p class="daily-norm-subtitle">Daily norm of sports</p>
+        </div>
+      </div>
+      <p class="daily-norm-text">The World Health Organization recommends at least 150 minutes of moderate-intensity aerobic physical activity per week for adults aged 18–64. However, what happens if we adjust that number to 110 minutes every day? While it might seem like a high number to hit, dedicating 110 minutes daily to sporting activities may offer unparalleled benefits to physical health, mental well-being, and overall quality of life.</p>
+    </div>
+  `;
+}
+
 function renderQuote({ quote, author }) {
-  const textEl = document.getElementById('js-quote-text');
-  const authorEl = document.getElementById('js-quote-author');
-  if (textEl) textEl.textContent = quote;
-  if (authorEl) authorEl.textContent = author;
+  document.querySelectorAll('.quote-text').forEach(el => {
+    el.textContent = quote;
+  });
+  document.querySelectorAll('.quote-author').forEach(el => {
+    el.textContent = author;
+  });
 }
 
 function setupTextAdjustment() {
@@ -60,6 +103,7 @@ export async function initQuoteSection() {
       data = await getQuote();
       saveQuoteToCache(data);
     }
+    populateSidebarWrapper();
     renderQuote(data);
     setupTextAdjustment();
   } catch (err) {

@@ -121,7 +121,7 @@
 }
 
 .subscribe-form input::placeholder {
-  color: #b3b3b3;
+  color: var(--color-light-grey);
 }
 
 .subscribe-form button {
@@ -138,7 +138,23 @@
 }
 
 .subscribe-form button:hover{
-  background-color: #b3b3b3;
+  background-color: var(--color-light-grey)3;
+}
+
+.bottom {
+  font-size: 14px;
+  color: var(--color-light-grey);
+  
+}
+.bottom-p {
+  margin-bottom: 10px;
+}
+
+.footer-links-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
 }
 
 .footer-links {
@@ -150,7 +166,7 @@
 }
 
 .footer-links .policy {
-  color: #b3b3b3;
+  color: var(--color-light-grey);
   text-decoration: none;
 }
 
@@ -160,7 +176,7 @@
 
 .copyright {
   margin: 0;
-  color: #b3b3b3;
+  color: var(--color-light-grey);
 }
 
 @media screen and (min-width: 375px) {
