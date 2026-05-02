@@ -26,25 +26,55 @@
     openMenuBtn: document.querySelector("[data-menu-open]"),
     closeMenuBtn: document.querySelector("[data-menu-close]"),
     menu: document.querySelector("[data-menu]"),
+    menuLinks: document.querySelectorAll('.nav-link, .mobile-nav-link'),
   };
 
-  refs.openMenuBtn.addEventListener("click", toggleMenu);
-  refs.closeMenuBtn.addEventListener("click", toggleMenu);
+  if (refs.openMenuBtn) {
+    refs.openMenuBtn.addEventListener("click", toggleMenu);
+  }
+
+  if (refs.closeMenuBtn) {
+    refs.closeMenuBtn.addEventListener("click", toggleMenu);
+  }
+
+  refs.menuLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      if (refs.menu && refs.menu.classList.contains('is-open')) {
+        toggleMenu();
+      }
+    });
+  });
+
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape' && refs.menu && refs.menu.classList.contains('is-open')) {
+      toggleMenu();
+    }
+  });
 
   function toggleMenu() {
+    if (!refs.menu) return;
     refs.menu.classList.toggle("is-open");
     document.body.classList.toggle("no-scroll");
   }
 
+  function getPageName(path) {
+    const normalized = path.replace(/\\/g, '/');
+    const segments = normalized.split('/').filter(Boolean);
+    return segments.length ? segments[segments.length - 1] : 'index.html';
+  }
+
   function setActiveMenu() {
-    const currentFile = window.location.pathname.split('/').pop() || 'index.html';
+    const currentPage = getPageName(window.location.pathname);
     const navLinks = document.querySelectorAll('.nav-link, .mobile-nav-link');
 
     navLinks.forEach(link => link.classList.remove('is-active'));
 
     navLinks.forEach(link => {
       const linkHref = link.getAttribute('href');
-      if (linkHref && linkHref.split('/').pop() === currentFile) {
+      if (!linkHref) return;
+
+      const linkPage = getPageName(linkHref);
+      if (linkPage === currentPage) {
         link.classList.add('is-active');
       }
     });

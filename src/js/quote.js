@@ -1,30 +1,63 @@
 import { getQuote } from './api.js';
 import { LS_KEYS } from './constants.js';
 
-async function loadQuote() {
-  const today = new Date().toISOString().slice(0, 10);
-  const cachedDate = localStorage.getItem(LS_KEYS.QUOTE_DATE);
-  let quote;
+function getTodayString() {
+  return new Date().toISOString().slice(0, 10);
+}
 
-  if (cachedDate === today) {
-    try {
-      quote = JSON.parse(localStorage.getItem(LS_KEYS.QUOTE));
-    } catch {
-      quote = null;
-    }
+function getCachedQuote() {
+  const savedDate = localStorage.getItem(LS_KEYS.QUOTE_DATE);
+  const savedQuote = localStorage.getItem(LS_KEYS.QUOTE);
+  if (savedDate === getTodayString() && savedQuote) {
+    return JSON.parse(savedQuote);
   }
+  return null;
+}
 
-  if (!quote) {
-    try {
-      quote = await getQuote();
-      localStorage.setItem(LS_KEYS.QUOTE, JSON.stringify(quote));
-      localStorage.setItem(LS_KEYS.QUOTE_DATE, today);
-    } catch {
-      return;
-    }
-  }
+function saveQuoteToCache(data) {
+  localStorage.setItem(LS_KEYS.QUOTE, JSON.stringify(data));
+  localStorage.setItem(LS_KEYS.QUOTE_DATE, getTodayString());
+}
 
-  renderQuote(quote);
+function populateSidebarWrapper() {
+  const wrapper = document.querySelector('.quote-wrapper');
+  if (!wrapper || wrapper.innerHTML.trim()) return;
+
+  wrapper.innerHTML = `
+    <div class="quote-card">
+      <div class="quote-card-top">
+        <div class="quote-card-icon-wrap">
+          <svg width="18" height="18" aria-hidden="true"><use href="./images/sprite.svg#icon-run"></use></svg>
+        </div>
+        <p class="quote-card-title">Quote of the day</p>
+        <svg class="quote-mark" width="24" height="24" aria-hidden="true"><use href="./images/sprite.svg#icon-quote"></use></svg>
+      </div>
+      <blockquote class="quote-text"></blockquote>
+      <p class="quote-author"></p>
+    </div>
+    <div class="quote-photo-wrap">
+      <img
+        src="./images/hero/women-sportswear-working-out-outdoors (2) 1_tab.png"
+        srcset="./images/hero/women-sportswear-working-out-outdoors (2) 1_tab@2x.png 2x"
+        alt="Women working out"
+        class="quote-photo"
+        width="290"
+        height="242"
+      />
+    </div>
+    <div class="daily-norm-card">
+      <div class="daily-norm-header">
+        <div class="daily-norm-icon-wrap">
+          <svg width="20" height="20" aria-hidden="true"><use href="./images/sprite.svg#icon-dumbbell"></use></svg>
+        </div>
+        <div>
+          <p class="daily-norm-time">110 min</p>
+          <p class="daily-norm-subtitle">Daily norm of sports</p>
+        </div>
+      </div>
+      <p class="daily-norm-text">The World Health Organization recommends at least 150 minutes of moderate-intensity aerobic physical activity per week for adults aged 18–64. However, what happens if we adjust that number to 110 minutes every day? While it might seem like a high number to hit, dedicating 110 minutes daily to sporting activities may offer unparalleled benefits to physical health, mental well-being, and overall quality of life.</p>
+    </div>
+  `;
 }
 
 function renderQuote({ quote, author }) {
@@ -36,4 +69,46 @@ function renderQuote({ quote, author }) {
   });
 }
 
-loadQuote();
+function setupTextAdjustment() {
+  const textEl = document.querySelector('.js-info-text-mobile');
+
+  if (!textEl) {
+    setTimeout(setupTextAdjustment, 100);
+    return;
+  }
+
+  if (!textEl.dataset.originalText) {
+    textEl.dataset.originalText = textEl.textContent.trim();
+  }
+
+  const original = textEl.dataset.originalText;
+
+  function adjustText() {
+    const w = window.innerWidth;
+    const maxLen = w < 768 ? 185 : w < 1440 ? 195 : original.length;
+    textEl.textContent =
+      original.length > maxLen
+        ? original.substring(0, maxLen).trim() + '...'
+        : original;
+  }
+
+  adjustText();
+  window.addEventListener('resize', adjustText);
+}
+
+export async function initQuoteSection() {
+  try {
+    let data = getCachedQuote();
+    if (!data) {
+      data = await getQuote();
+      saveQuoteToCache(data);
+    }
+    populateSidebarWrapper();
+    renderQuote(data);
+    setupTextAdjustment();
+  } catch (err) {
+    console.error('initQuoteSection error:', err);
+  }
+}
+
+initQuoteSection();

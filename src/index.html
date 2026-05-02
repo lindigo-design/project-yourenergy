@@ -10,8 +10,16 @@
       name="description"
       content="YourEnergy — find exercises by muscle groups, body parts and equipment"
     />
+
+  <link rel="icon" type="image/png" href="/favicon-96x96.png?v=3" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=3" />
+  <link rel="shortcut icon" href="/favicon.ico?v=3" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=3" />
+  <link rel="manifest" href="/webmanifest.json?v=3" />
+
+
     <title>YourEnergy</title>
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    
     <link rel="stylesheet" href="./css/styles.css" />
   </head>
   <body>
@@ -22,14 +30,29 @@
       <load src="./partials/hero.html" />
 
       <!-- FILTERS + CATEGORIES + EXERCISES -->
-      <load src="./partials/exercises.html" />
+      <section class="home-exercises-section" data-section="catalog">
+  <div class="container home-exercises-layout">
+    <load src="./partials/exercises.html" />
 
-      <!-- QUOTE -->
-      <section class="quote-section" data-section="quote">
-        <div class="container">
-          <load src="./partials/quote.html" />
+    <div class="home-exercises-content">
+      <aside class="home-exercises-sidebar">
+        <load src="./partials/quote.html" />
+      </aside>
+
+      <div class="home-exercises-main">
+        <div class="categories-wrapper" data-section="categories">
+          <ul class="categories-list" id="categories-container" role="list"></ul>
         </div>
-      </section>
+
+        <div class="exercises-wrapper visually-hidden" data-section="exercises-list">
+          <ul class="exercises-list" id="exercises-container" role="list"></ul>
+        </div>
+
+        <div class="pagination" id="pagination-container"></div>
+      </div>
+    </div>
+  </div>
+</section>
     </main>
 
     <!-- FOOTER -->
@@ -38,12 +61,13 @@
     <!-- SCROLL UP -->
     <button
       class="scroll-up"
-      data-section="scroll-up"
       aria-label="Scroll to top"
       hidden
-    >
-      ↑
-    </button>
+      >
+     <svg class="scroll-up-icon" width="24" height="24">
+    <use href="./images/sprite.svg#icon-arrow-top-right"></use>
+  </svg>
+  </button>
 
     <load src="./partials/exercice-modal.html" />
 

@@ -209,7 +209,7 @@
 
   .exercises-body {
     display: grid;
-    grid-template-columns: 476px 1fr;
+    grid-template-columns: 444px 1fr;
     gap: 32px;
     align-items: start;
   }

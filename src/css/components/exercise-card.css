@@ -5,12 +5,16 @@
 
 .exercise-card {
   background-color: #ffffff;
-  border-radius: 16px;
-  padding: 16px;
+  border-radius: 15px !important;
+  overflow: hidden;
+  padding: 16px !important;
   display: flex;
   flex-direction: column;
-  height: 141px;
+  min-height: 141px !important;
   min-width: 0;
+  box-shadow: none !important;
+  margin: 0 !important;
+  max-width: none !important;
 }
 
 /* ── Card header (badge + start) ─────────────────────────── */
@@ -25,7 +29,7 @@
 .exercise-card-badge-wrap {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 9px;
 }
 
 .exercise-card-badge {
@@ -68,13 +72,19 @@
 
 /* ── Rating (Home) ───────────────────────────────────────── */
 
+.exercise-card-badge-wrap:has(.exercise-card-rating) {
+  gap: 16px;
+}
+
 .exercise-card-rating {
   display: flex;
   align-items: center;
-  gap: 2px;
+  gap: 4px;
   font-family: 'DM Sans', sans-serif;
+  font-weight: 400;
   font-size: 12px;
-  line-height: 1.5;
+  line-height: 1.5; /* 18px / 12px = 1.5 */
+  letter-spacing: 0px;
   color: #242424;
 }
 
@@ -113,7 +123,33 @@
   display: flex;
   align-items: center;
   gap: 16px;
-  margin-bottom: 16px;
+  min-width: 0;
+  margin-bottom: 8px;
+  height: 32px;
+}
+
+@media screen and (min-width: 768px) {
+  .exercise-card-title-wrap {
+    margin-bottom: 16px;
+  }
+
+  .exercise-card-title {
+    font-size: 20px;
+    line-height: 26px;
+    height: 26px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .exercise-card-title-wrap {
+    margin-bottom: 8px;
+  }
+
+  .exercise-card-title {
+    font-size: 24px;
+    line-height: 32px;
+    height: 32px;
+  }
 }
 
 .exercise-card-icon-wrap {
@@ -128,19 +164,25 @@
 }
 
 .exercise-card-icon {
-  width: 14px;
-  height: 14px;
+  width: 24px !important;
+  height: 24px !important;
   fill: #ffffff;
 }
 
 .exercise-card-title {
   font-family: 'DM Sans', sans-serif;
-  font-weight: 500;
+  font-weight: 400;
   font-size: 24px;
-  line-height: 1.33;
+  line-height: 1.33; /* 32px / 24px = 1.33 */
+  color: #242424;
+  white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  white-space: nowrap;
+  text-transform: lowercase;
+}
+
+.exercise-card-title::first-letter {
+  text-transform: uppercase;
 }
 
 /* ── Card info list (calories, body part, target) ────────── */
