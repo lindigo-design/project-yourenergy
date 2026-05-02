@@ -14,15 +14,15 @@
 }
 
 .favorites-section .container {
-  max-width: 100%;
-  padding-inline: 20px;
+  /* Використовуємо глобальні стилі контейнера */
 }
 
 .favorites-title {
-  font-family: 'DM Sans', sans-serif;
-  font-weight: 500;
+  font-family: var(--main-font);
+  font-weight: 400;
   font-size: 28px;
-  line-height: 1.17;
+  line-height: 1.14;
+  letter-spacing: -0.02em;
   margin-bottom: 20px;
 }
 
@@ -103,8 +103,11 @@
   }
 
   .favorites-title {
-    font-size: 32px;
-    line-height: 1.37;
+    font-family: var(--main-font);
+    font-weight: var(--fw-regular) !important;
+    font-size: var(--fs-4xl) !important;
+    line-height: 1.09;
+    letter-spacing: -0.02em;
     margin-bottom: 32px;
   }
 
@@ -125,6 +128,7 @@
   .favorites-list {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 32px 16px;
+    align-items: start;
   }
 }
 
@@ -133,32 +137,25 @@
     padding-top: 90px;
   }
 
-  .favorites-section .container {
-    max-width: 1440px;
-    margin: 0 auto;
-  }
-
-  .favorites-title {
-    margin-bottom: 32px;
-  }
-
   .favorites-wrapper {
     flex-direction: row;
+    align-items: flex-start;
+    gap: 32px;
   }
 
   .favorites-quote-wrap {
     flex-shrink: 0;
-    width: 340px;
-  }
-
-  .favorites-empty-text {
-    max-width: 554px;
-    margin: auto;
-    font-size: 18px;
+    width: 494px;
   }
 
   .favorites-list-wrapper {
-    max-height: 487px;
-    overflow-y: auto;
+    flex: 1;
+    min-width: 0;
+  }
+
+  .favorites-list {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px 16px;
+    align-items: start;
   }
 }
