@@ -1,74 +1,38 @@
-// ============================================================
-//  СТОРІНКА FAVORITES — відповідальний: [ПОСТАВ ІМ'Я]
-//
-//  Що реалізувати (ТЗ п.32-34):
-//  - Працює на favorites.html
-//  - Блок цитати дня (викликаємо з quote.js)
-//  - Блок списку улюблених вправ з localStorage
-//  - Картка: назва, калорії, частина тіла, мета + Start + "видалити"
-//  - Клік по Start → dispatchEvent EXERCISE_OPEN
-//  - Клік по "видалити" → removeFavorite(id) → перерендер
-//  - Якщо нема улюблених — повідомлення
-//  - Слухати FAVORITES_CHANGED → перерендер
-//
-//  Твоя розмітка: src/partials/favorites-list.html
-//  Твої стилі:    src/css/components/favorites-page.css
-// ============================================================
+
 
 import { getFavorites, removeFavorite } from './favorites-storage.js';
 import { EVENTS } from './constants.js';
+import { createExerciseCardMarkup } from './exercise-card.js';
 
 const favoritesList = document.querySelector('.favorites-list');
 const emptyMessage = document.querySelector('.favorites-empty-text');
+const paginationContainer = document.querySelector('.favorites-pagination');
 
-function createFavoriteCardMarkup(exercise) {
-  const { _id, name, burnedCalories, time, bodyPart, target } = exercise;
+let currentPage = 1;
 
-  return `
-    <li class="favorite-item" data-id="${_id}">
-      <div class="favorite-item-header">
-        <div class="favorite-item-badge-wrap">
-          <span class="favorite-item-badge">WORKOUT</span>
-          <button class="favorite-item-trash-btn" type="button" aria-label="Remove from favorites">
-            <svg width="16" height="16">
-              <use href="./img/sprite.svg#icon-trash"></use>
-            </svg>
-          </button>
-        </div>
-        <button class="favorite-item-start-btn" type="button">
-          Start
-          <svg width="16" height="16">
-            <use href="./img/sprite.svg#icon-arrow"></use>
-          </svg>
-        </button>
-      </div>
-      
-      <div class="favorite-item-title-wrap">
-        <div class="favorite-item-icon-wrap">
-          <svg class="favorite-item-icon" width="24" height="24">
-            <use href="./img/sprite.svg#icon-running-man"></use>
-          </svg>
-        </div>
-        <h3 class="favorite-item-title">${name}</h3>
-      </div>
-      
-      <ul class="favorite-item-info-list">
-        <li class="favorite-item-info-item">
-          <span class="favorite-item-info-label">Burned calories:</span>
-          <span class="favorite-item-info-value">${burnedCalories} / ${time} min</span>
-        </li>
-        <li class="favorite-item-info-item">
-          <span class="favorite-item-info-label">Body part:</span>
-          <span class="favorite-item-info-value">${bodyPart}</span>
-        </li>
-        <li class="favorite-item-info-item">
-          <span class="favorite-item-info-label">Target:</span>
-          <span class="favorite-item-info-value">${target}</span>
-        </li>
-      </ul>
-    </li>
-  `;
+function getItemsPerPage() {
+  if (window.matchMedia('(min-width: 1280px)').matches) return Infinity;
+  if (window.matchMedia('(min-width: 768px)').matches) return 10;
+  return 8;
 }
+
+function renderPagination(totalItems, perPage) {
+  if (!paginationContainer) return;
+  if (perPage === Infinity || totalItems <= perPage) {
+    paginationContainer.innerHTML = '';
+    return;
+  }
+
+  const totalPages = Math.ceil(totalItems / perPage);
+  let markup = '';
+  for (let i = 1; i <= totalPages; i++) {
+    const isActive = i === currentPage ? 'is-active' : '';
+    markup += `<button class="favorites-pagination-btn ${isActive}" data-page="${i}">${i}</button>`;
+  }
+  paginationContainer.innerHTML = markup;
+}
+
+
 
 function renderFavorites() {
   if (!favoritesList || !emptyMessage) return;
@@ -79,39 +43,69 @@ function renderFavorites() {
     emptyMessage.style.display = 'block';
     favoritesList.style.display = 'none';
     favoritesList.innerHTML = '';
-  } else {
-    emptyMessage.style.display = 'none';
-    favoritesList.style.display = '';
-    favoritesList.innerHTML = savedExercises.map(createFavoriteCardMarkup).join('');
+    if (paginationContainer) paginationContainer.innerHTML = '';
+    return;
   }
+
+  emptyMessage.style.display = 'none';
+  favoritesList.style.display = 'grid';
+
+  const perPage = getItemsPerPage();
+  
+  const totalPages = Math.ceil(savedExercises.length / perPage);
+  if (currentPage > totalPages && totalPages > 0) {
+    currentPage = totalPages;
+  }
+
+  let visibleExercises = savedExercises;
+  if (perPage !== Infinity) {
+    const startIndex = (currentPage - 1) * perPage;
+    visibleExercises = savedExercises.slice(startIndex, startIndex + perPage);
+  }
+
+  favoritesList.innerHTML = visibleExercises.map(ex => createExerciseCardMarkup(ex, true)).join('');
+  renderPagination(savedExercises.length, perPage);
 }
 
 if (favoritesList) {
-  // Initial render
   renderFavorites();
 
-  // Re-render when favorites change (e.g., deleted from this page, or changed in another tab)
   window.addEventListener(EVENTS.FAVORITES_CHANGED, renderFavorites);
 
-  // Event delegation for buttons
   favoritesList.addEventListener('click', (e) => {
-    const card = e.target.closest('.favorite-item');
+    const card = e.target.closest('.exercise-card');
     if (!card) return;
 
     const id = card.dataset.id;
 
-    // Check if the trash button was clicked
-    if (e.target.closest('.favorite-item-trash-btn')) {
+    if (e.target.closest('.exercise-card-trash-btn')) {
       removeFavorite(id);
       return;
     }
 
-    // Check if the start button was clicked
-    if (e.target.closest('.favorite-item-start-btn')) {
-      window.dispatchEvent(
-        new CustomEvent(EVENTS.EXERCISE_OPEN, { detail: { exerciseId: id } })
+    if (e.target.closest('.exercise-card-start-btn')) {
+      document.dispatchEvent(
+        new CustomEvent(EVENTS.EXERCISE_OPEN, { detail: { id } })
       );
       return;
     }
+  });
+
+  if (paginationContainer) {
+    paginationContainer.addEventListener('click', (e) => {
+      const btn = e.target.closest('.favorites-pagination-btn');
+      if (!btn) return;
+      
+      currentPage = Number(btn.dataset.page);
+      renderFavorites();
+      
+      document.querySelector('.favorites-section').scrollIntoView({ behavior: 'smooth' });
+    });
+  }
+  
+  let resizeTimer;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(renderFavorites, 200);
   });
 }

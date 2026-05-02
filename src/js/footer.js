@@ -1,26 +1,26 @@
-// ============================================================
-//  FOOTER + ФОРМА ПІДПИСКИ — відповідальний: [ПОСТАВ ІМ'Я]
-//
-//  Що реалізувати (ТЗ п.36, 40-42):
-//  - Логотип (клік → на головну)
-//  - Соц-мережі (ті самі URL що в header)
-//  - Слоган
-//  - Форма підписки: input email + Send
-//  - Валідація за EMAIL_PATTERN з constants.js
-//  - На submit → subscribe(email) з api.js
-//  - Успіх → iziToast.success
-//  - Помилка → iziToast.error (текст з err.response?.data?.message)
-//
-//  Твоя розмітка: src/partials/footer.html
-//  Твої стилі:    src/css/components/footer.css
-// ============================================================
-
 import { subscribe } from './api.js';
 import { EMAIL_PATTERN } from './constants.js';
 import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
 
-// TODO: знайти форму, додати submit listener
-// TODO: перевірити EMAIL_PATTERN.test(email) перед запитом
-// TODO: await subscribe(email) → iziToast.success
-// TODO: catch → iziToast.error
+document.addEventListener('submit', async (e) => {
+  if (!e.target.matches('#subscribe-form')) return;
+  e.preventDefault();
+
+  const input = e.target.elements.email;
+  const email = input.value.trim();
+
+  if (!EMAIL_PATTERN.test(email)) {
+    iziToast.error({ message: 'Please enter a valid email address.', position: 'topRight' });
+    return;
+  }
+
+  try {
+    await subscribe(email);
+    iziToast.success({ message: 'You have successfully subscribed!', position: 'topRight' });
+    e.target.reset();
+  } catch (err) {
+    const msg = err.response?.data?.message ?? 'Subscription failed. Please try again.';
+    iziToast.error({ message: msg, position: 'topRight' });
+  }
+});
