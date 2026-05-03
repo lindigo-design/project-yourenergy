@@ -94,7 +94,7 @@
 
 .subscribe-form label {
   font-size: 14px;
-  color: var(--color-black);
+  color: var(--color-white);
   margin-bottom: 20px;
   display: flex;
   flex-direction: column;
@@ -138,7 +138,9 @@
 }
 
 .subscribe-form button:hover{
-  background-color: var(--color-light-grey)3;
+  background-color: var(--color-light-grey);
+  color: var(--white-color);
+
 }
 
 .bottom {
@@ -181,7 +183,7 @@
 
 @media screen and (min-width: 375px) {
   .subscribe-form input[type="email"] {
-    width: 335px;
+  width: 335px;
   }
   .subscribe-form button {
    width: 335px;
@@ -244,7 +246,7 @@
 }
 
 
-@media screen and (min-width: 1440px){
+@media screen and (min-width: 1280px){
   
   .footer-wrapper{
     gap: 158px;
@@ -257,8 +259,10 @@
   }
   
  .footer h2{
-    margin-bottom: 0;
-    width: 595px;  
+  margin-bottom: 0;
+  max-width: 595px;
+  width: 100%;
+  word-break: break-word;
   }
   
   .bottom{

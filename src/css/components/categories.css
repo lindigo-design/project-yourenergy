@@ -48,7 +48,7 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  color: #fff;
+  color: var(--color-bg-white);
   text-align: center;
   pointer-events: none;
   width: 100%;
@@ -97,13 +97,14 @@
 }
 
 .pagination-btn.active {
-  border: 1px solid #242424;
-  color: #242424;
+  border: 1px solid var(--color-border-solid);
+  color: var(--color-border-solid);
   font-weight: 700;
 }
 
 .pagination-btn:hover:not(.active) {
-  color: #242424;
+  border-color: var(--color-border-solid);
+  color: var(--color-border-solid);
 }
 
 .pagination-nav-btn {
@@ -166,7 +167,7 @@
   }
 }
 
-@media screen and (min-width: 1440px) {
+@media screen and (min-width: 1280px) {
   .categories-list {
     grid-template-columns: repeat(3, 1fr);
     gap: 15px;

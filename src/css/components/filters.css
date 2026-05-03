@@ -27,8 +27,19 @@
   gap: 16px;
 }
 
+.exercises-body {
+  display: flex;
+  flex-direction: column;
+}
+
+.exercises-content {
+  order: 1;
+}
+
 .exercises-sidebar {
-  display: none;
+  display: block;
+  order: 2;
+  margin-top: 32px;
 }
 
 .filter-list {
@@ -183,7 +194,7 @@
   }
 }
 
-@media screen and (min-width: 1440px) {
+@media screen and (min-width: 1280px) {
   .exercises-header-wrapper {
     display: flex;
     align-items: center;
@@ -216,5 +227,11 @@
 
   .exercises-sidebar {
     display: block;
+    order: 0;
+    margin-top: 0;
+  }
+
+  .exercises-content {
+    order: 0;
   }
 }
