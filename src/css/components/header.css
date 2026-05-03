@@ -257,6 +257,13 @@ button {
   width: 44px;
   height: 44px;
 }
+.menu-close-btn svg {
+  fill: currentColor;
+  stroke: currentColor;
+}
+.menu-close-btn {
+  color: var(--color-white);
+}
 
 .mobile-nav {
   flex: 1;
