@@ -1,10 +1,15 @@
 /* ============================================================
-   quote.css — стилі секції "quote"
+   quote.css
    ============================================================ */
 
+.quote-wrapper {
+  margin-top: 32px;
+}
+
+/* ── Quote card ── */
 .quote-card {
   background: #242424;
-  border-radius: 12px;
+  border-radius: 20px;
   padding: 20px;
   color: #ffffff;
   margin-bottom: 16px;
@@ -12,92 +17,96 @@
 
 .quote-card-top {
   display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 16px;
+  align-items: flex-start;
+  gap: 16px;
 }
 
 .quote-card-icon-wrap {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 36px;
-  height: 36px;
+  width: 34px;
+  height: 32px;
   border-radius: 50%;
-  background: #ffffff;
+  background: rgba(244, 244, 244, 0.2);
   flex-shrink: 0;
 }
 
 .quote-card-icon-wrap svg {
-  fill: #242424;
-  width: 18px;
-  height: 18px;
+  fill: #ffffff;
+  width: 32px;
+  height: 32px;
 }
 
 .quote-card-title {
-  font-family: var(--font-primary);
-  font-size: 16px;
+  font-size: 20px;
   font-weight: 500;
   color: #ffffff;
   flex: 1;
+  line-height: 1;
 }
 
 .quote-mark {
   fill: #ffffff;
-  opacity: 0.4;
   flex-shrink: 0;
+  align-self: flex-start;
 }
 
 .quote-text {
-  font-family: var(--font-primary);
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 400;
-  line-height: 1.6;
-  color: rgba(255, 255, 255, 0.8);
-  margin-bottom: 12px;
+  line-height: 1.28;
+  color: rgba(244, 244, 244, 0.6);
+  margin-bottom: 8px;
 }
 
 .quote-author {
-  font-family: var(--font-primary);
-  font-size: 13px;
-  font-weight: 500;
+  font-size: 14px;
+  font-weight: 400;
   color: #ffffff;
 }
 
+/* ── Photo ── */
 .quote-photo-wrap {
-  border-radius: 12px;
+  border-radius: 20px;
   overflow: hidden;
   margin-bottom: 16px;
   width: 100%;
 }
 
 .quote-photo {
-  width: 100%;
-  height: 242px;
+  width: 335px;
+  height: 119px;
   object-fit: cover;
   display: block;
 }
 
+/* ── Bottom row ── */
+.quote-bottom-row {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* ── Daily norm card ── */
 .daily-norm-card {
   background: #ffffff;
-  border-radius: 12px;
+  border-radius: 20px;
   padding: 20px;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
 }
 
 .daily-norm-header {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 12px;
-  margin-bottom: 16px;
 }
 
 .daily-norm-icon-wrap {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 40px;
-  height: 40px;
+  width: 34px;
+  height: 32px;
   border-radius: 50%;
   background: #242424;
   flex-shrink: 0;
@@ -110,28 +119,226 @@
 }
 
 .daily-norm-time {
-  font-family: var(--font-primary);
   font-size: 20px;
-  font-weight: 700;
+  font-weight: 500;
   color: #242424;
-  line-height: 1.2;
+  line-height: 1;
 }
 
 .daily-norm-subtitle {
-  font-family: var(--font-primary);
-  font-size: 12px;
+  font-size: 14px;
   color: rgba(36, 36, 36, 0.6);
+  padding: 6px 0 20px 0;
 }
 
 .daily-norm-text {
-  font-family: var(--font-primary);
-  font-size: 12px;
-  line-height: 1.7;
-  color: rgba(36, 36, 36, 0.7);
+  font-size: 14px;
+  line-height: 1.2;
+  color: #242424;
+  padding-left: 46px;
 }
 
+/* ── Favorites mobile ── */
+.favorites-quote-wrap .quote-text {
+  padding-left: 50px;
+}
+
+.favorites-quote-wrap .quote-author {
+  padding-left: 50px;
+}
+
+.favorites-quote-wrap .daily-norm-text {
+  display: none;
+}
+
+.favorites-quote-wrap .daily-norm-icon-wrap {
+  background: transparent;
+  width: auto;
+  height: auto;
+  border-radius: 0;
+}
+
+.favorites-quote-wrap .daily-norm-icon-wrap svg {
+  fill: #242424;
+}
+
+.favorites-quote-wrap .daily-norm-header {
+  flex-direction: column;
+  gap: 15px;
+}
+
+.favorites-quote-wrap .daily-norm-card {
+  width: 335px;
+  height: 119px;
+  box-sizing: border-box;
+}
+
+.favorites-quote-wrap .quote-card {
+  height: auto;
+  width: 335px;
+  box-sizing: border-box;
+}
+
+/* ══════════════════════════════════════
+   TABLET (768px+)
+   ══════════════════════════════════════ */
+@media screen and (min-width: 768px) {
+  .quote-wrapper {
+    margin-top: 40px;
+  }
+
+  .quote-card {
+    padding: 40px;
+    margin-bottom: 32px;
+  }
+
+  .quote-card-title {
+    font-size: 24px;
+  }
+
+  .daily-norm-card {
+    padding: 40px;
+  }
+
+  .daily-norm-time {
+    font-size: 24px;
+  }
+
+  .daily-norm-text {
+    padding-left: 47px;
+  }
+
+  /* Favorites tablet */
+  .favorites-quote-wrap .quote-card {
+    margin-bottom: 16px;
+    height: auto;
+    width: 704px;
+    box-sizing: border-box;
+  }
+
+  .favorites-quote-wrap .quote-bottom-row {
+    flex-direction: row;
+    align-items: stretch;
+    gap: 16px;
+    width: 704px;
+  }
+
+  .favorites-quote-wrap .quote-bottom-row .daily-norm-card {
+    flex: none;
+    padding: 20px;
+    box-sizing: border-box;
+    width: 344px;
+    height: 141px;
+  }
+
+  .favorites-quote-wrap .quote-bottom-row .daily-norm-header {
+    flex-direction: column;
+    gap: 15px;
+    align-items: flex-start;
+    margin-bottom: 0;
+  }
+
+  .favorites-quote-wrap .quote-bottom-row .daily-norm-icon-wrap {
+    background-color: transparent;
+    width: auto;
+    height: auto;
+    border-radius: 0;
+  }
+
+  .favorites-quote-wrap .quote-bottom-row .daily-norm-icon-wrap svg {
+    fill: #242424;
+    width: 20px;
+    height: 20px;
+  }
+
+  .favorites-quote-wrap .quote-bottom-row .quote-photo-wrap {
+    flex: none;
+    margin-bottom: 0;
+    height: 141px;
+    width: 344px;
+  }
+
+  .favorites-quote-wrap .quote-bottom-row .quote-photo {
+    height: 100%;
+  }
+}
+
+/* ══════════════════════════════════════
+   DESKTOP (1440px+)
+   ══════════════════════════════════════ */
 @media screen and (min-width: 1440px) {
-  .quote-section {
-    display: none;
+  .quote-wrapper {
+    margin-top: 0;
+    width: 444px;
+  }
+
+  .quote-card {
+    width: 100%;
+    padding: 40px;
+    margin-bottom: 20px;
+  }
+
+  .quote-card-title {
+    font-size: 24px;
+  }
+
+  .quote-photo-wrap {
+    margin-bottom: 20px;
+  }
+
+  .quote-text {
+    padding-left: 50px;
+  }
+  .quote-author {
+    padding-left: 50px;
+  }
+  .quote-photo {
+    height: 242px;
+  }
+
+  .daily-norm-card {
+    width: 444px;
+    height: 315px;
+    padding: 40px;
+  }
+
+  .daily-norm-text {
+    width: 350px;
+    height: 163px;
+  }
+
+  /* Favorites desktop */
+  .favorites-quote-wrap .quote-wrapper {
+    flex-shrink: 0;
+  }
+
+  .favorites-quote-wrap .quote-card {
+    width: 494px;
+    height: auto;
+    padding: 40px;
+  }
+
+  .favorites-quote-wrap .quote-bottom-row {
+    flex-direction: row;
+    gap: 15px;
+  }
+
+  .favorites-quote-wrap .quote-bottom-row .daily-norm-card {
+    flex: none;
+    padding: 20px;
+    height: 141px;
+    width: 239px;
+    box-sizing: border-box;
+  }
+
+  .favorites-quote-wrap .quote-bottom-row .quote-photo-wrap {
+    flex: none;
+    height: 141px;
+    width: 239px;
+    margin-bottom: 0;
+  }
+
+  .favorites-quote-wrap .quote-bottom-row .daily-norm-header {
+    gap: 15px;
   }
 }

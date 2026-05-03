@@ -6,17 +6,21 @@ function getTodayString() {
 }
 
 function getCachedQuote() {
-  const savedDate = localStorage.getItem(LS_KEYS.QUOTE_DATE);
-  const savedQuote = localStorage.getItem(LS_KEYS.QUOTE);
-  if (savedDate === getTodayString() && savedQuote) {
-    return JSON.parse(savedQuote);
+  const saved = localStorage.getItem(LS_KEYS.QUOTE);
+  if (!saved) return null;
+
+  const parsed = JSON.parse(saved);
+  if (parsed.date === getTodayString()) {
+    return parsed;
   }
   return null;
 }
 
 function saveQuoteToCache(data) {
-  localStorage.setItem(LS_KEYS.QUOTE, JSON.stringify(data));
-  localStorage.setItem(LS_KEYS.QUOTE_DATE, getTodayString());
+  localStorage.setItem(
+    LS_KEYS.QUOTE,
+    JSON.stringify({ ...data, date: getTodayString() })
+  );
 }
 
 function populateSidebarWrapper() {
@@ -55,7 +59,7 @@ function populateSidebarWrapper() {
           <p class="daily-norm-subtitle">Daily norm of sports</p>
         </div>
       </div>
-      <p class="daily-norm-text">The World Health Organization recommends at least 150 minutes of moderate-intensity aerobic physical activity per week for adults aged 18–64. However, what happens if we adjust that number to 110 minutes every day? While it might seem like a high number to hit, dedicating 110 minutes daily to sporting activities may offer unparalleled benefits to physical health, mental well-being, and overall quality of life.</p>
+      <p class="daily-norm-text">The World Health Organization recommends at least 150 minutes of moderate-intensity aerobic physical activity throughout the week for adults aged 18-64. However, what happens if we adjust that number to 110 minutes every day? While it might seem like a high number to hit, dedicating 110 minutes daily to sporting activities may offer unparalleled benefits to physical health, mental well-being, and overall quality of life.</p>
     </div>
   `;
 }
@@ -70,7 +74,7 @@ function renderQuote({ quote, author }) {
 }
 
 function setupTextAdjustment() {
-  const textEl = document.querySelector('.js-info-text-mobile');
+  const textEl = document.querySelector('.daily-norm-text');
 
   if (!textEl) {
     setTimeout(setupTextAdjustment, 100);
