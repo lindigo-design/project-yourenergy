@@ -1,3 +1,11 @@
+.favorites-quote-wrap .quote-photo {
+  content: image-set(
+    url('../images/hero/women-sportswear-working-out-outdoors-(2)-1_mob.png') 1x,
+    url('../images/hero/women-sportswear-working-out-outdoors_(2)_1_tab@2x.png')
+      2x
+  );
+}
+
 .quote-wrapper {
   margin-top: 32px;
 }
@@ -56,12 +64,14 @@
   line-height: 1.28;
   color: rgba(244, 244, 244, 0.6);
   margin-bottom: 8px;
+  padding-left: 52px;
 }
 
 .quote-author {
   font-size: 14px;
   font-weight: 400;
   color: #ffffff;
+  padding-left: 52px;
 }
 
 /* ── Photo ── */
@@ -128,7 +138,7 @@
 .daily-norm-subtitle {
   font-size: 14px;
   color: rgba(36, 36, 36, 0.6);
-  padding: 6px 0 20px 0;
+  padding-bottom: 20px;
 }
 
 .daily-norm-text {
@@ -184,20 +194,47 @@
    ══════════════════════════════════════ */
 @media screen and (min-width: 768px) {
   .quote-wrapper {
+    width: 704px;
     margin-top: 40px;
+    display: grid;
+    grid-template-columns: 400px 288px;
+    grid-template-rows: auto auto;
+    gap: 16px;
+    grid-template-areas:
+      'quote photo'
+      'norm  photo';
   }
 
   .quote-card {
+    grid-area: quote;
     padding: 40px;
-    margin-bottom: 32px;
+    margin-bottom: 0;
+    width: 100%;
+    box-sizing: border-box;
+    min-height: 249px;
+  }
+
+  .quote-photo-wrap {
+    grid-area: photo;
+    margin-bottom: 0;
+    height: 249px;
+  }
+
+  .quote-photo {
+    object-fit: cover;
+    height: 249px;
+  }
+
+  .daily-norm-card {
+    grid-area: norm;
+    padding: 40px;
+    width: 100%;
+    height: 249px;
+    box-sizing: border-box;
   }
 
   .quote-card-title {
     font-size: 24px;
-  }
-
-  .daily-norm-card {
-    padding: 40px;
   }
 
   .daily-norm-time {
@@ -209,6 +246,10 @@
   }
 
   /* Favorites tablet */
+  .favorites-quote-wrap .quote-wrapper {
+    display: block;
+  }
+
   .favorites-quote-wrap .quote-card {
     margin-bottom: 16px;
     height: auto;
@@ -217,6 +258,7 @@
   }
 
   .favorites-quote-wrap .quote-bottom-row {
+    display: flex;
     flex-direction: row;
     align-items: stretch;
     gap: 16px;
@@ -261,6 +303,15 @@
   .favorites-quote-wrap .quote-bottom-row .quote-photo {
     height: 100%;
   }
+
+  .favorites-quote-wrap .quote-photo {
+    content: image-set(
+      url('../images/hero/women-sportswear-working-out-outdoors-(2)-1_tab.png')
+        1x,
+      url('../images/hero/women-sportswear-working-out-outdoors_(2)_1_tab@2x.png')
+        2x
+    );
+  }
 }
 
 /* ══════════════════════════════════════
@@ -270,6 +321,7 @@
   .quote-wrapper {
     margin-top: 0;
     width: 444px;
+    display: block;
   }
 
   .quote-card {
@@ -284,14 +336,18 @@
 
   .quote-photo-wrap {
     margin-bottom: 20px;
+    width: 444px;
+    height: auto;
   }
 
   .quote-text {
     padding-left: 50px;
   }
+
   .quote-author {
     padding-left: 50px;
   }
+
   .quote-photo {
     height: 242px;
   }
@@ -305,11 +361,13 @@
   .daily-norm-text {
     width: 350px;
     height: 163px;
+    padding-left: 47px;
   }
 
   /* Favorites desktop */
   .favorites-quote-wrap .quote-wrapper {
     flex-shrink: 0;
+    display: block;
   }
 
   .favorites-quote-wrap .quote-card {
@@ -319,6 +377,7 @@
   }
 
   .favorites-quote-wrap .quote-bottom-row {
+    display: flex;
     flex-direction: row;
     gap: 15px;
   }
@@ -340,5 +399,15 @@
 
   .favorites-quote-wrap .quote-bottom-row .daily-norm-header {
     gap: 15px;
+  }
+
+  @media screen and (min-width: 1280px) {
+    .favorites-quote-wrap .quote-photo {
+      content: image-set(
+        url('../images/hero/women-sportswear-working-out-outdoors-(2)-1.png') 1x,
+        url('../images/hero/women-sportswear-working-out-outdoors_(2)_1@2x.png')
+          2x
+      );
+    }
   }
 }

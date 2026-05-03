@@ -41,8 +41,8 @@ function populateSidebarWrapper() {
     </div>
     <div class="quote-photo-wrap">
       <img
-        src="./images/hero/women-sportswear-working-out-outdoors (2) 1_tab.png"
-        srcset="./images/hero/women-sportswear-working-out-outdoors (2) 1_tab@2x.png 2x"
+        src="./images/hero/women-sportswear-taking-break-from-workout_1_mob@2x.png"
+        srcset="./images/hero/women-sportswear-taking-break-from-workout_1_mob@2x.png"
         alt="Women working out"
         class="quote-photo"
         width="290"
@@ -89,7 +89,7 @@ function setupTextAdjustment() {
 
   function adjustText() {
     const w = window.innerWidth;
-    const maxLen = w < 768 ? 185 : w < 1440 ? 195 : original.length;
+    const maxLen = w < 768 ? 169 : w < 1280 ? 179 : original.length;
     textEl.textContent =
       original.length > maxLen
         ? original.substring(0, maxLen).trim() + '...'
