@@ -2,7 +2,7 @@
 
 Командний проєкт GoIT — веб-додаток для пошуку вправ за групами м'язів, частинами тіла та обладнанням.
 
-🔗 **Живий сайт:** https://renk0rr.github.io/project-yourenergy/
+🔗 **Живий сайт:** https://lindigo-design.github.io/project-yourenergy/
 🎨 **Макет Figma:** https://www.figma.com/design/1ifqGcQBIzMoc21yIqyV5q/YourEnergy
 📋 **ТЗ:** https://docs.google.com/spreadsheets/d/18DqWibAs4rDYax5NldEsHO54dUgCtqgyy3So6LpLbyM
 
