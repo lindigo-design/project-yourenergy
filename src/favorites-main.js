@@ -1,9 +1,8 @@
-// ============================================================
-//  FAVORITES-MAIN — точка входу для favorites.html
-//  Відповідальний: Вероніка Галлямова
-// ============================================================
-
 import './css/styles.css';
+
+// Import sprite URL so Vite bundles and hashes it correctly
+import spriteUrl from './images/sprite.svg';
+window.__SPRITE_URL__ = spriteUrl;
 
 import './js/header.js';
 import './js/quote.js';

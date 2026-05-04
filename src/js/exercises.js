@@ -1,3 +1,4 @@
+import { spriteHref } from './sprite.js';
 import { getExercises } from './api.js';
 import { EVENTS, PAGINATION } from './constants.js';
 import { showLoader, hideLoader } from './loader.js';
@@ -81,7 +82,7 @@ function renderExerciseCards(exercises) {
                     <div class="ex-badge">WORKOUT</div>
                     <div class="ex-rating">
                         ${rating.toFixed(1)}
-                        <svg width="14" height="14" aria-hidden="true"><use href="./images/sprite.svg#icon-star"></use></svg>
+                        <svg width="14" height="14" aria-hidden="true"><use href="${spriteHref('icon-star')}"></use></svg>
                     </div>
                     <button class="ex-start-btn" data-id="${_id}">
                         Start →
@@ -89,7 +90,7 @@ function renderExerciseCards(exercises) {
                 </div>
                 <h3 class="ex-title">
                     <span class="ex-icon-wrap">
-                        <svg class="ex-icon" width="14" height="16" aria-hidden="true"><use href="./images/sprite.svg#icon-run"></use></svg>
+                        <svg class="ex-icon" width="14" height="16" aria-hidden="true"><use href="${spriteHref('icon-run')}"></use></svg>
                     </span>
                     ${name}
                 </h3>

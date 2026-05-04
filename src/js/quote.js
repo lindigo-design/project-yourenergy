@@ -1,3 +1,5 @@
+import { spriteHref } from './sprite.js';
+import quotePhotoUrl from '../images/hero/women-sportswear-taking-break-from-workout_1_mob@2x.png';
 import { getQuote } from './api.js';
 import { LS_KEYS } from './constants.js';
 
@@ -31,18 +33,18 @@ function populateSidebarWrapper() {
     <div class="quote-card">
       <div class="quote-card-top">
         <div class="quote-card-icon-wrap">
-          <svg width="18" height="18" aria-hidden="true"><use href="./images/sprite.svg#icon-run"></use></svg>
+          <svg width="18" height="18" aria-hidden="true"><use href="${spriteHref('icon-run')}"></use></svg>
         </div>
         <p class="quote-card-title">Quote of the day</p>
-        <svg class="quote-mark" width="24" height="24" aria-hidden="true"><use href="./images/sprite.svg#icon-quote"></use></svg>
+        <svg class="quote-mark" width="24" height="24" aria-hidden="true"><use href="${spriteHref('icon-quote')}"></use></svg>
       </div>
       <blockquote class="quote-text"></blockquote>
       <p class="quote-author"></p>
     </div>
     <div class="quote-photo-wrap">
       <img
-        src="./images/hero/women-sportswear-taking-break-from-workout_1_mob@2x.png"
-        srcset="./images/hero/women-sportswear-taking-break-from-workout_1_mob@2x.png"
+        src="${quotePhotoUrl}"
+        srcset="${quotePhotoUrl} 2x"
         alt="Women working out"
         class="quote-photo"
         width="290"
@@ -52,7 +54,7 @@ function populateSidebarWrapper() {
     <div class="daily-norm-card">
       <div class="daily-norm-header">
         <div class="daily-norm-icon-wrap">
-          <svg width="20" height="20" aria-hidden="true"><use href="./images/sprite.svg#icon-dumbbell"></use></svg>
+          <svg width="20" height="20" aria-hidden="true"><use href="${spriteHref('icon-dumbbell')}"></use></svg>
         </div>
         <div>
           <p class="daily-norm-time">110 min</p>

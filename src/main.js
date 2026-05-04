@@ -1,11 +1,9 @@
-// ============================================================
-//  MAIN — точка входу для index.html
-//  Імпортує всі модулі, які потрібні на головній сторінці.
-//  Кожен розробник імпортує свій файл тут після того, як закінчив.
-// ============================================================
-
 // Глобальні стилі
 import './css/styles.css';
+
+// Import sprite URL so Vite bundles and hashes it correctly
+import spriteUrl from './images/sprite.svg';
+window.__SPRITE_URL__ = spriteUrl;
 
 // Секції (імпортуйте в міру готовності):
 import './js/header.js';
