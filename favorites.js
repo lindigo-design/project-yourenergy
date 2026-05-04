@@ -1,4 +1,4 @@
-import{b as o,E as v,r as m,d as x,c as b}from"./assets/scroll-up-yDhhfrJE.js";import"./assets/vendor-DT-nbzqF.js";function w(t,e=!0){const{_id:s,name:r,burnedCalories:i,time:u,bodyPart:p,target:g,rating:f}=t,h=e?`<button class="exercise-card-trash-btn" type="button" aria-label="Remove from favorites">
+import{b as o,E as v,r as m,d as x,c as b}from"./assets/scroll-up-t5hXyBaD.js";import"./assets/vendor-DT-nbzqF.js";function w(t,e=!0){const{_id:s,name:r,burnedCalories:i,time:u,bodyPart:p,target:g,rating:f}=t,h=e?`<button class="exercise-card-trash-btn" type="button" aria-label="Remove from favorites">
          <svg width="16" height="16">
            <use href="${o("icon-trash")}"></use>
          </svg>
